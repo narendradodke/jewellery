@@ -16,15 +16,15 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
     const variants = {
       primary:
-        "bg-gold-gradient text-black font-semibold hover:shadow-gold-md hover:brightness-110 active:scale-[0.99] border border-gold-300/30",
+        "bg-gold-gradient text-black font-semibold hover:shadow-gold-md hover:brightness-105 active:scale-[0.99] border border-gold-300/40 overflow-hidden relative before:absolute before:inset-0 before:-translate-x-full hover:before:translate-x-full before:bg-gradient-to-r before:from-transparent before:via-white/35 before:to-transparent before:transition-transform before:duration-700",
       secondary:
-        "bg-card hover:bg-card-hover text-white border border-luxury-border hover:border-gold-500/40",
+        "bg-card hover:bg-card-hover text-white border border-luxury-border hover:border-gold-500/50 transition-colors duration-300",
       goldOutline:
-        "bg-transparent text-gold-300 border border-gold-500/60 hover:bg-gold-500/10 hover:text-gold-200 hover:border-gold-400 hover:shadow-gold-sm",
+        "bg-transparent text-gold-300 border border-gold-500 hover:bg-gold-500 hover:text-black hover:border-gold-400 transition-colors duration-300 shadow-sm hover:shadow-gold-sm",
       outline:
-        "bg-transparent text-white/90 border border-white/20 hover:border-white/60 hover:text-white",
+        "bg-transparent text-white/90 border border-white/20 hover:border-white/60 hover:text-white transition-colors duration-300",
       ghost:
-        "bg-transparent text-white/80 hover:text-gold-300 hover:bg-white/5",
+        "bg-transparent text-white/80 hover:text-gold-300 hover:bg-white/5 transition-colors duration-300",
     };
 
     const sizes = {
