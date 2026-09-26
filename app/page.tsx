@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, AnimatePresence, type Variants } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { ArrowRight, Sparkles, Gem, ShieldCheck, Clock, Award } from "lucide-react";
 import { IMAGE_ASSETS } from "@/lib/imageAssets";
 import { COLLECTIONS, PRODUCTS } from "@/lib/mockData";
@@ -16,8 +16,6 @@ const heroImages = [
   "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=1920&q=80",
   "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=1920&q=80",
   "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=1920&q=80",
-  "https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=1920&q=80",
-  "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?auto=format&fit=crop&w=1920&q=80",
 ];
 
 const staggerContainer: Variants = {
@@ -41,61 +39,42 @@ const fadeUp: Variants = {
 
 export default function HomePage() {
   const newArrivalProducts = PRODUCTS.filter((p) => p.isNewArrival).slice(0, 4);
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroImages.length);
-    }, 6000);
-    return () => clearInterval(timer);
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % heroImages.length);
+    }, 5000);
+    return () => clearInterval(interval);
   }, []);
 
   return (
     <main className="min-h-screen bg-background text-white overflow-hidden">
       {/* 1. HERO SECTION */}
       <section className="relative min-h-[90vh] lg:min-h-[92vh] flex items-center justify-start overflow-hidden">
-        {/* Auto-playing Ken Burns Slideshow Background */}
+        {/* Background Images Crossfade Slideshow */}
         <div className="absolute inset-0 z-0 overflow-hidden">
-          <AnimatePresence initial={false}>
-            <motion.div
-              key={currentSlide}
-              initial={{ opacity: 0, scale: 1.03 }}
-              animate={{ opacity: 1, scale: 1.15 }}
-              exit={{ opacity: 0 }}
-              transition={{
-                opacity: { duration: 1.5, ease: "easeInOut" },
-                scale: { duration: 6.8, ease: "easeOut" },
-              }}
-              className="absolute inset-0"
+          {heroImages.map((src, index) => (
+            <div
+              key={src}
+              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                index === currentIndex ? "opacity-100" : "opacity-0 pointer-events-none"
+              }`}
             >
               <Image
-                src={heroImages[currentSlide]}
-                alt={`LUXORA Fine Jewellery - Hero Slide ${currentSlide + 1}`}
+                src={src}
+                alt={`LUXORA Fine Jewellery - Hero Slide ${index + 1}`}
                 fill
-                priority={currentSlide === 0}
+                priority
                 sizes="100vw"
                 className="object-cover object-center"
               />
-            </motion.div>
-          </AnimatePresence>
-
-          {/* Multi-layered dark luxury gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/75 to-black/30 lg:to-transparent z-[1]" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-black/40 z-[1]" />
-        </div>
-
-        {/* Hidden Preloader for Hero Images */}
-        <div className="hidden" aria-hidden="true">
-          {heroImages.map((src, index) => (
-            <Image
-              key={src}
-              src={src}
-              alt=""
-              width={10}
-              height={10}
-              priority={index < 2}
-            />
+            </div>
           ))}
+
+          {/* Dark gradient overlay on top of all images for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent z-10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-black/40 z-10" />
         </div>
 
         {/* Slideshow Progress Indicators */}
@@ -104,10 +83,10 @@ export default function HomePage() {
             <button
               key={idx}
               type="button"
-              onClick={() => setCurrentSlide(idx)}
+              onClick={() => setCurrentIndex(idx)}
               aria-label={`Go to slide ${idx + 1}`}
               className={`h-1 transition-all duration-500 rounded-full ${
-                idx === currentSlide
+                idx === currentIndex
                   ? "w-8 bg-gold-400"
                   : "w-2 bg-white/30 hover:bg-white/60"
               }`}
@@ -116,7 +95,7 @@ export default function HomePage() {
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
+        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
           <motion.div
             variants={staggerContainer}
             initial="hidden"
