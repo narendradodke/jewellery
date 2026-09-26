@@ -15,11 +15,13 @@ function ShopContent() {
   const initialCategory = searchParams.get("category") || "all";
   const initialSearch = searchParams.get("search") || "";
 
+  const maxProductPrice = useMemo(() => Math.max(...PRODUCTS.map((p) => p.price)), []);
+
   // Filter States
   const [selectedCategory, setSelectedCategory] = useState<string>(initialCategory);
   const [selectedMetal, setSelectedMetal] = useState<string>("all");
   const [selectedStone, setSelectedStone] = useState<string>("all");
-  const [maxPrice, setMaxPrice] = useState<number>(600000);
+  const [maxPrice, setMaxPrice] = useState<number>(maxProductPrice);
   const [searchQuery, setSearchQuery] = useState<string>(initialSearch);
   const [sortBy, setSortBy] = useState<string>("featured");
   const [mobileFilterOpen, setMobileFilterOpen] = useState<boolean>(false);
@@ -90,7 +92,7 @@ function ShopContent() {
     setSelectedCategory("all");
     setSelectedMetal("all");
     setSelectedStone("all");
-    setMaxPrice(600000);
+    setMaxPrice(maxProductPrice);
     setSearchQuery("");
     setSortBy("featured");
   };
@@ -99,7 +101,7 @@ function ShopContent() {
     (selectedCategory !== "all" ? 1 : 0) +
     (selectedMetal !== "all" ? 1 : 0) +
     (selectedStone !== "all" ? 1 : 0) +
-    (maxPrice < 600000 ? 1 : 0) +
+    (maxPrice < maxProductPrice ? 1 : 0) +
     (searchQuery.trim() !== "" ? 1 : 0);
 
   return (
@@ -213,11 +215,11 @@ function ShopContent() {
                 </button>
               </span>
             )}
-            {maxPrice < 600000 && (
+            {maxPrice < maxProductPrice && (
               <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-gold-500/10 border border-gold-500/30 text-gold-300 text-xs">
                 <span>Under {formatPrice(maxPrice)}</span>
                 <button
-                  onClick={() => setMaxPrice(600000)}
+                  onClick={() => setMaxPrice(maxProductPrice)}
                   className="hover:text-white"
                   aria-label="Remove price filter"
                 >
@@ -351,7 +353,7 @@ function ShopContent() {
               <input
                 type="range"
                 min={50000}
-                max={600000}
+                max={maxProductPrice}
                 step={25000}
                 value={maxPrice}
                 onChange={(e) => setMaxPrice(Number(e.target.value))}
@@ -359,7 +361,7 @@ function ShopContent() {
               />
               <div className="flex justify-between text-[10px] text-luxury-muted">
                 <span>{formatPrice(50000)}</span>
-                <span>{formatPrice(600000)}</span>
+                <span>{formatPrice(maxProductPrice)}</span>
               </div>
             </div>
           </aside>
@@ -444,7 +446,7 @@ function ShopContent() {
               <input
                 type="range"
                 min={50000}
-                max={600000}
+                max={maxProductPrice}
                 step={25000}
                 value={maxPrice}
                 onChange={(e) => setMaxPrice(Number(e.target.value))}
