@@ -76,7 +76,7 @@ export const Footer: React.FC = () => {
               Crafting extraordinary diamond and high-karat gold heirlooms since 1988. Each creation is an immortal ode to timeless beauty, artisanal mastery, and sustainable provenance.
             </p>
 
-            {/* Newsletter */}
+            {/* Newsletter & Socials */}
             <div className="pt-2">
               <h5 className="text-xs uppercase tracking-widest text-gold-300 font-semibold mb-2">
                 The LUXORA Circle
@@ -84,7 +84,7 @@ export const Footer: React.FC = () => {
               <p className="text-[11px] text-luxury-muted mb-3">
                 Receive private invitations to preview high-jewellery private salons.
               </p>
-              <form onSubmit={(e) => e.preventDefault()} className="flex max-w-sm">
+              <form onSubmit={(e) => e.preventDefault()} className="flex max-w-sm mb-5">
                 <div className="relative flex-1">
                   <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-luxury-muted" />
                   <input
@@ -101,11 +101,51 @@ export const Footer: React.FC = () => {
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </form>
+
+              {/* Social Media Links */}
+              <div className="flex items-center gap-3">
+                <span className="text-[11px] uppercase tracking-wider text-luxury-muted font-mono mr-1">Follow:</span>
+                <a
+                  href="https://instagram.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LUXORA on Instagram"
+                  className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-white/60 hover:text-gold-400 hover:border-gold-500/40 hover:scale-110 transition-all duration-300"
+                >
+                  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                  </svg>
+                </a>
+                <a
+                  href="https://facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LUXORA on Facebook"
+                  className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-white/60 hover:text-gold-400 hover:border-gold-500/40 hover:scale-110 transition-all duration-300"
+                >
+                  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                  </svg>
+                </a>
+                <a
+                  href="https://pinterest.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LUXORA on Pinterest"
+                  className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-white/60 hover:text-gold-400 hover:border-gold-500/40 hover:scale-110 transition-all duration-300"
+                >
+                  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345-.09.375-.291 1.199-.332 1.365-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/>
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
 
           {/* Col: Fine Jewellery */}
-          <div className="space-y-3">
+          <div className="space-y-3 lg:border-l lg:border-white/5 lg:pl-8">
             <h4 className="text-xs uppercase tracking-widest text-white font-semibold">
               Collections
             </h4>
@@ -144,7 +184,7 @@ export const Footer: React.FC = () => {
           </div>
 
           {/* Col: Client Concierge */}
-          <div className="space-y-3">
+          <div className="space-y-3 lg:border-l lg:border-white/5 lg:pl-8">
             <h4 className="text-xs uppercase tracking-widest text-white font-semibold">
               Client Concierge
             </h4>
@@ -178,7 +218,7 @@ export const Footer: React.FC = () => {
           </div>
 
           {/* Col: Boutiques */}
-          <div className="space-y-3">
+          <div className="space-y-3 lg:border-l lg:border-white/5 lg:pl-8">
             <h4 className="text-xs uppercase tracking-widest text-white font-semibold">
               Boutiques
             </h4>
@@ -200,13 +240,40 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
+        {/* Payment Methods Bar */}
+        <div className="pt-8 mt-10 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <span className="text-[11px] uppercase tracking-widest text-luxury-muted font-mono">
+            Secured Bespoke Checkout
+          </span>
+          <div className="flex flex-wrap items-center justify-center gap-2">
+            {[
+              { label: "VISA", sub: "" },
+              { label: "MASTERCARD", sub: "" },
+              { label: "AMEX", sub: "" },
+              { label: "UPI", sub: "" },
+              { label: "PAYPAL", sub: "" },
+              { label: "APPLE PAY", sub: "" },
+            ].map((method) => (
+              <div
+                key={method.label}
+                className="h-7 px-2.5 rounded border border-white/10 bg-white/[0.02] flex items-center justify-center text-[10px] tracking-wider text-white/50 font-mono font-medium hover:border-gold-500/40 hover:text-gold-300 hover:bg-gold-500/[0.03] transition-all"
+              >
+                {method.label}
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Bottom Bar */}
-        <div className="pt-12 mt-12 border-t border-white/5 flex flex-col md:flex-row items-center justify-between text-xs text-luxury-subtle gap-4">
+        <div className="pt-6 mt-6 border-t border-white/5 flex flex-col md:flex-row items-center justify-between text-xs text-luxury-subtle gap-4">
           <p suppressHydrationWarning>&copy; {currentYear} LUXORA Haute Joaillerie Ltd. All Rights Reserved.</p>
+          <p className="text-xs text-luxury-muted flex items-center gap-1.5">
+            Crafted with <span className="text-gold-400">♥</span> in India &bull; Certified High Joaillerie
+          </p>
           <div className="flex items-center space-x-6 text-[11px]">
-            <span className="hover:text-white cursor-pointer">Privacy Policy</span>
-            <span className="hover:text-white cursor-pointer">Terms of Service</span>
-            <span className="hover:text-white cursor-pointer">Conflict-Free Diamonds</span>
+            <span className="hover:text-white cursor-pointer transition-colors">Privacy Policy</span>
+            <span className="hover:text-white cursor-pointer transition-colors">Terms of Service</span>
+            <span className="hover:text-white cursor-pointer transition-colors">Conflict-Free Diamonds</span>
           </div>
         </div>
       </div>

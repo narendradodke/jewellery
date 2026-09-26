@@ -78,12 +78,15 @@ const NavbarContent: React.FC = () => {
 
       {/* Main Header */}
       <header
-        className={`sticky top-0 z-50 w-full transition-all duration-300 ${
+        className={`sticky top-0 z-50 w-full transition-all duration-500 relative ${
           isScrolled
-            ? "bg-[#0A0A0A]/95 backdrop-blur-md border-b border-luxury-border shadow-dark-card py-3"
-            : "bg-[#0A0A0A]/80 backdrop-blur-sm border-b border-white/5 py-4"
+            ? "bg-[#0A0A0A]/95 backdrop-blur-md border-b border-gold-500/30 shadow-dark-card py-2.5"
+            : "bg-[#0A0A0A]/85 backdrop-blur-sm border-b border-white/5 py-4"
         }`}
       >
+        {isScrolled && (
+          <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold-400/60 to-transparent" />
+        )}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             {/* Mobile Hamburger Button */}
@@ -101,7 +104,7 @@ const NavbarContent: React.FC = () => {
             {/* Brand Logo */}
             <div className="flex-1 lg:flex-none text-center lg:text-left">
               <Link href="/" className="inline-block group">
-                <span className="font-serif text-2xl sm:text-3xl tracking-[0.25em] text-gold-400 uppercase font-bold group-hover:text-gold-300 transition-colors">
+                <span className="font-serif text-2xl sm:text-3xl tracking-[0.25em] text-gold-400 uppercase font-light group-hover:text-gold-300 transition-colors">
                   LUXORA
                 </span>
                 <span className="hidden sm:block text-[9px] uppercase tracking-[0.4em] text-luxury-muted -mt-1 font-mono">
@@ -132,7 +135,7 @@ const NavbarContent: React.FC = () => {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className={`relative text-xs uppercase tracking-widest font-medium transition-colors hover:text-gold-300 py-1 ${
+                    className={`relative text-xs uppercase tracking-editorial font-medium transition-colors hover:text-gold-300 py-1 ${
                       isActive ? "text-gold-400" : "text-white/80"
                     }`}
                   >
@@ -150,7 +153,7 @@ const NavbarContent: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setSearchModalOpen(true)}
-                className="p-2 text-white/80 hover:text-gold-400 transition-colors hidden sm:block"
+                className="p-2 text-white/80 hover:text-gold-400 hover:scale-110 transition-all duration-300 hidden sm:block"
                 aria-label="Search Collection"
               >
                 <Search className="w-4 h-4" />
@@ -158,7 +161,7 @@ const NavbarContent: React.FC = () => {
 
               <Link
                 href="/shop"
-                className="p-2 text-white/80 hover:text-gold-400 transition-colors relative"
+                className="p-2 text-white/80 hover:text-gold-400 hover:scale-110 transition-all duration-300 relative"
                 aria-label="Wishlist"
               >
                 <Heart className="w-4 h-4" />
@@ -171,12 +174,15 @@ const NavbarContent: React.FC = () => {
 
               <Link
                 href="/cart"
-                className="p-2 text-white/80 hover:text-gold-400 transition-colors relative"
+                className="p-1.5 sm:px-2.5 sm:py-1 text-white/80 hover:text-gold-400 hover:scale-105 transition-all duration-300 relative flex items-center gap-1.5"
                 aria-label="Shopping Bag"
               >
                 <ShoppingBag className="w-4 h-4" />
+                <span className="hidden xl:inline text-xs font-mono uppercase tracking-wider text-gold-300">
+                  Bag {isMounted ? `(${cartCount})` : "(0)"}
+                </span>
                 {isMounted && cartCount > 0 && (
-                  <span className="absolute top-1 right-1 w-4 h-4 text-[9px] font-bold bg-gold-500 text-black rounded-full flex items-center justify-center animate-pulse">
+                  <span className="xl:hidden absolute top-0.5 right-0.5 w-4 h-4 text-[9px] font-bold bg-gold-500 text-black rounded-full flex items-center justify-center animate-pulse">
                     {cartCount}
                   </span>
                 )}
@@ -184,7 +190,7 @@ const NavbarContent: React.FC = () => {
 
               <Link
                 href="/cart"
-                className="p-2 text-white/80 hover:text-gold-400 transition-colors hidden sm:block"
+                className="p-2 text-white/80 hover:text-gold-400 hover:scale-110 transition-all duration-300 hidden sm:block"
                 aria-label="Account"
               >
                 <User className="w-4 h-4" />
