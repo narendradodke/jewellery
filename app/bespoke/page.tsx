@@ -59,8 +59,8 @@ export default function BespokePage() {
             <span>Private Commissions Atelier</span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl font-serif text-white tracking-wide">
-            Bespoke Haute Joaillerie
+          <h1 className="text-3xl sm:text-5xl font-serif text-white tracking-wide font-light">
+            Bespoke <span className="italic font-normal text-gold-gradient">Haute Joaillerie</span>
           </h1>
 
           <p className="text-xs sm:text-sm text-luxury-muted font-light max-w-xl mx-auto leading-relaxed">

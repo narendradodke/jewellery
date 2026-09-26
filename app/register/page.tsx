@@ -47,8 +47,8 @@ export default function RegisterPage() {
             <Sparkles className="w-3 h-3" />
             <span>Atelier Invitation</span>
           </div>
-          <h1 className="text-3xl font-serif tracking-wide text-white">
-            Create Patron Account
+          <h1 className="text-3xl font-serif tracking-wide text-white font-light">
+            Create <span className="text-gold-gradient font-normal">Patron Account</span>
           </h1>
           <p className="text-xs text-luxury-muted font-light">
             Register to receive confidential salon previews and bespoke privileges.

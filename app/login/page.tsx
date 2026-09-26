@@ -46,8 +46,8 @@ export default function LoginPage() {
             <Sparkles className="w-3 h-3" />
             <span>Private Patron Salon</span>
           </div>
-          <h1 className="text-3xl font-serif tracking-wide text-white">
-            Welcome to LUXORA
+          <h1 className="text-3xl font-serif tracking-wide text-white font-light">
+            Welcome to <span className="text-gold-gradient font-normal">LUXORA</span>
           </h1>
           <p className="text-xs text-luxury-muted font-light">
             Sign in to access your bespoke orders and saved heirlooms.

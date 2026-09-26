@@ -113,8 +113,8 @@ function ShopContent() {
             <p className="text-[11px] uppercase tracking-[0.3em] text-gold-400 font-mono font-medium">
               LUXORA Fine Jewelry
             </p>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-white tracking-wide">
-              The Fine Jewellery Collection
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-white tracking-wide font-light">
+              The Fine Jewellery <span className="italic font-normal text-gold-gradient">Collection</span>
             </h1>
             <p className="text-xs sm:text-sm text-luxury-muted max-w-xl font-light">
               Explore timeless diamond solitaires, hallmarked 22K gold heirlooms, and handcrafted royal ornaments.

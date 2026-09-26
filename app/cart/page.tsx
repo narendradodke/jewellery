@@ -160,8 +160,8 @@ export default function CartAndCheckoutPage() {
           <p className="text-[11px] uppercase tracking-[0.3em] text-gold-400 font-mono">
             Checkout & Atelier Order
           </p>
-          <h1 className="text-3xl sm:text-4xl font-serif text-white">
-            Your Shopping Bag & Checkout
+          <h1 className="text-3xl sm:text-4xl font-serif text-white font-light">
+            Your Shopping Bag &amp; <span className="italic font-normal text-gold-gradient">Checkout</span>
           </h1>
         </div>
       </section>
