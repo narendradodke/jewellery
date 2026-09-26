@@ -8,18 +8,21 @@ import "./globals.css";
 const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-playfair",
+  weight: ["400", "500", "600"],
   display: "swap",
 });
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  weight: ["300", "400", "500"],
   display: "swap",
 });
 
 const cinzel = Cinzel({
   subsets: ["latin"],
   variable: "--font-cinzel",
+  weight: ["400", "500", "600"],
   display: "swap",
 });
 
@@ -35,7 +38,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable} ${cinzel.variable}`}>
-      <body className="bg-background text-white min-h-screen flex flex-col font-sans">
+      <body className="bg-background text-white min-h-screen flex flex-col font-sans bg-film-grain">
         <Navbar />
         <PageTransition>{children}</PageTransition>
         <Footer />

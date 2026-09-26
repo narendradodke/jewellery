@@ -11,17 +11,22 @@
   body {
     @apply bg-background text-white antialiased selection:bg-gold-500 selection:text-black;
     font-family: var(--font-inter), sans-serif;
+    line-height: 1.6;
+    font-weight: 300;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-playfair), serif;
+    line-height: 1.15;
+    font-weight: 400;
+    letter-spacing: -0.01em;
   }
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
 }
 
 ::-webkit-scrollbar-track {
@@ -29,8 +34,8 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #262626;
-  border-radius: 4px;
+  background: #222222;
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -41,8 +46,40 @@
   box-shadow: 0 0 25px rgba(212, 175, 55, 0.25);
 }
 
-.gold-gradient-text {
-  background: linear-gradient(135deg, #F3E4B2 0%, #D4AF37 50%, #997517 100%);
+.gold-gradient-text,
+.text-gold-gradient {
+  background: linear-gradient(135deg, #D4AF37 0%, #F4E5B1 50%, #D4AF37 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+/* Underline grow animation on hover */
+.gold-underline-expand {
+  position: relative;
+  display: inline-block;
+}
+
+.gold-underline-expand::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: #D4AF37;
+  transform-origin: bottom right;
+  transition: transform 0.35s ease-out;
+}
+
+.gold-underline-expand:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Subtle Film Grain Noise Texture */
+.bg-film-grain {
+  background-image: radial-gradient(rgba(212, 175, 55, 0.04) 1px, transparent 0);
+  background-size: 32px 32px;
+}
+

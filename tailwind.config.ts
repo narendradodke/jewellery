@@ -48,6 +48,11 @@ const config: Config = {
         cinzel: ["var(--font-cinzel)", "Cinzel", "serif"],
         sans: ["var(--font-inter)", "Inter", "sans-serif"],
       },
+      letterSpacing: {
+        luxe: "0.15em",
+        editorial: "0.25em",
+        tightest: "-0.04em",
+      },
       backgroundImage: {
         "gold-gradient": "linear-gradient(135deg, #E5C07B 0%, #D4AF37 50%, #997517 100%)",
         "gold-gradient-hover": "linear-gradient(135deg, #F3E4B2 0%, #DFBA54 50%, #C59B27 100%)",
