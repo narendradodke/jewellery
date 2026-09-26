@@ -49,6 +49,10 @@ export const Navbar: React.FC = () => {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [pathname]);
+
   const navLinks = [
     { label: "Home", href: "/" },
     { label: "Shop All", href: "/shop" },
