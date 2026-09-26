@@ -8,7 +8,7 @@ interface Props {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const product = PRODUCTS.find((p) => p.id === params.id) || PRODUCTS[0];
+  const product = PRODUCTS.find((p) => p.id === params.id);
 
   if (!product) {
     return {
@@ -46,7 +46,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default function ProductDetailPage({ params }: Props) {
-  const product = PRODUCTS.find((p) => p.id === params.id) || PRODUCTS[0];
+  const product = PRODUCTS.find((p) => p.id === params.id);
 
   if (!product) {
     notFound();
