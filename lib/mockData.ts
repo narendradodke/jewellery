@@ -366,6 +366,806 @@ export const PRODUCTS: Product[] = [
     purity: "22K (916 Gold)",
     sku: "LUX-KCS-10",
   },
+
+  // 11. Eternal Solitaire Ring
+  {
+    id: "prod-11",
+    name: "Eternal Solitaire Ring",
+    description: "A classic solitaire diamond ring in 18K white gold with a brilliant-cut center stone.",
+    price: 145000,
+    discountPrice: 129999,
+    category: "diamond",
+    metal: "18K White Gold",
+    stone: "Solitaire Diamond",
+    stock: 6,
+    images: [
+      "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=800&q=80",
+    ],
+    rating: 4.9,
+    reviewCount: 24,
+    isNewArrival: true,
+    createdAt: new Date().toISOString(),
+  },
+
+  // 12. Halo Diamond Studs
+  {
+    id: "prod-12",
+    name: "Halo Diamond Studs",
+    description: "Round diamond stud earrings surrounded by a delicate halo of smaller diamonds.",
+    price: 89999,
+    discountPrice: 79999,
+    category: "diamond",
+    metal: "18K White Gold",
+    stone: "VVS Diamonds",
+    stock: 8,
+    images: [
+      "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=800&q=80",
+    ],
+    rating: 4.8,
+    reviewCount: 18,
+    isNewArrival: true,
+    createdAt: new Date().toISOString(),
+  },
+
+  // 13. Infinity Diamond Pendant
+  {
+    id: "prod-13",
+    name: "Infinity Diamond Pendant",
+    description: "An elegant infinity-shaped pendant with pavé-set diamonds on a fine gold chain.",
+    price: 65000,
+    discountPrice: 58500,
+    category: "diamond",
+    metal: "18K Yellow Gold",
+    stone: "VVS Diamonds",
+    stock: 10,
+    images: [
+      "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=800&q=80",
+    ],
+    rating: 4.7,
+    reviewCount: 15,
+    isNewArrival: true,
+    createdAt: new Date().toISOString(),
+  },
+
+  // 14. Rose Gold Diamond Bangle
+  {
+    id: "prod-14",
+    name: "Rose Gold Diamond Bangle",
+    description: "A sleek rose gold bangle with channel-set diamonds, perfect for everyday luxury.",
+    price: 210000,
+    discountPrice: 189000,
+    category: "diamond",
+    metal: "18K Rose Gold",
+    stone: "VVS Diamonds",
+    stock: 4,
+    images: [
+      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=800&q=80",
+    ],
+    rating: 4.9,
+    reviewCount: 21,
+    isNewArrival: true,
+    createdAt: new Date().toISOString(),
+  },
+
+  // 15. Princess Cut Diamond Ring
+  {
+    id: "prod-15",
+    name: "Princess Cut Diamond Ring",
+    description: "A princess-cut diamond ring set in platinum with a double-prong setting.",
+    price: 175000,
+    discountPrice: 157500,
+    category: "diamond",
+    metal: "Platinum",
+    stone: "Solitaire Diamond",
+    stock: 5,
+    images: [
+      "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=800&q=80",
+    ],
+    rating: 4.8,
+    reviewCount: 29,
+    isNewArrival: true,
+    createdAt: new Date().toISOString(),
+  },
+
+  // 16. Diamond Tennis Bracelet
+  {
+    id: "prod-16",
+    name: "Diamond Tennis Bracelet",
+    description: "A timeless tennis bracelet featuring 52 round brilliant diamonds in white gold.",
+    price: 350000,
+    discountPrice: 315000,
+    category: "diamond",
+    metal: "18K White Gold",
+    stone: "VVS Diamonds",
+    stock: 3,
+    images: [
+      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=800&q=80",
+    ],
+    rating: 5.0,
+    reviewCount: 32,
+    isNewArrival: true,
+    createdAt: new Date().toISOString(),
+  },
+
+  // 17. Pear Shape Diamond Drop Earrings
+  {
+    id: "prod-17",
+    name: "Pear Shape Diamond Drop Earrings",
+    description: "Pear-shaped diamond drop earrings with a delicate milgrain border.",
+    price: 120000,
+    discountPrice: 108000,
+    category: "diamond",
+    metal: "18K White Gold",
+    stone: "Solitaire Diamond",
+    stock: 7,
+    images: [
+      "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=800&q=80",
+    ],
+    rating: 4.8,
+    reviewCount: 16,
+    isNewArrival: true,
+    createdAt: new Date().toISOString(),
+  },
+
+  // 18. Diamond Cluster Cocktail Ring
+  {
+    id: "prod-18",
+    name: "Diamond Cluster Cocktail Ring",
+    description: "A statement cocktail ring with a cluster of diamonds in a floral motif.",
+    price: 285000,
+    discountPrice: 256500,
+    category: "diamond",
+    metal: "18K White Gold",
+    stone: "VVS Diamonds",
+    stock: 4,
+    images: [
+      "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=800&q=80",
+    ],
+    rating: 4.9,
+    reviewCount: 22,
+    isNewArrival: true,
+    createdAt: new Date().toISOString(),
+  },
+
+  // 19. Diamond Line Necklace
+  {
+    id: "prod-19",
+    name: "Diamond Line Necklace",
+    description: "A minimalist diamond line necklace with 40 round diamonds in 18K yellow gold.",
+    price: 420000,
+    discountPrice: 378000,
+    category: "diamond",
+    metal: "18K Yellow Gold",
+    stone: "VVS Diamonds",
+    stock: 2,
+    images: [
+      "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=800&q=80",
+    ],
+    rating: 5.0,
+    reviewCount: 19,
+    isNewArrival: true,
+    createdAt: new Date().toISOString(),
+  },
+
+  // 20. Diamond Eternity Band
+  {
+    id: "prod-20",
+    name: "Diamond Eternity Band",
+    description: "A full eternity band with emerald-cut diamonds, symbolizing everlasting love.",
+    price: 195000,
+    discountPrice: 175500,
+    category: "diamond",
+    metal: "Platinum",
+    stone: "VVS Diamonds",
+    stock: 5,
+    images: [
+      "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=800&q=80",
+    ],
+    rating: 4.9,
+    reviewCount: 27,
+    isNewArrival: true,
+    createdAt: new Date().toISOString(),
+  },
+
+  // 21. 22K Gold Temple Necklace
+  {
+    id: "prod-21",
+    name: "22K Gold Temple Necklace",
+    description: "A traditional temple-style gold necklace with intricate carvings of deities.",
+    price: 380000,
+    discountPrice: 342000,
+    category: "gold",
+    metal: "22K Yellow Gold",
+    stone: "None",
+    stock: 3,
+    images: [
+      "https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=800&q=80",
+    ],
+    rating: 4.9,
+    reviewCount: 31,
+    isNewArrival: true,
+    createdAt: new Date().toISOString(),
+  },
+
+  // 22. Gold Coin Pendant Necklace
+  {
+    id: "prod-22",
+    name: "Gold Coin Pendant Necklace",
+    description: "A 22K gold coin pendant on a fine gold chain, a symbol of prosperity.",
+    price: 55000,
+    discountPrice: 49500,
+    category: "gold",
+    metal: "22K Yellow Gold",
+    stone: "None",
+    stock: 12,
+    images: [
+      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=800&q=80",
+    ],
+    rating: 4.7,
+    reviewCount: 14,
+    isNewArrival: true,
+    createdAt: new Date().toISOString(),
+  },
+
+  // 23. Gold Jhumka Earrings
+  {
+    id: "prod-23",
+    name: "Gold Jhumka Earrings",
+    description: "Traditional gold jhumka earrings with pearl drops and filigree work.",
+    price: 72000,
+    discountPrice: 64800,
+    category: "gold",
+    metal: "22K Yellow Gold",
+    stone: "Pearl",
+    stock: 9,
+    images: [
+      "https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=800&q=80",
+    ],
+    rating: 4.8,
+    reviewCount: 25,
+    isNewArrival: true,
+    createdAt: new Date().toISOString(),
+  },
+
+  // 24. Gold Chain with Om Pendant
+  {
+    id: "prod-24",
+    name: "Gold Chain with Om Pendant",
+    description: "A gold chain with an Om pendant, perfect for daily wear and spiritual occasions.",
+    price: 48000,
+    discountPrice: 43200,
+    category: "gold",
+    metal: "22K Yellow Gold",
+    stone: "None",
+    stock: 15,
+    images: [
+      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=800&q=80",
+    ],
+    rating: 4.9,
+    reviewCount: 36,
+    isNewArrival: true,
+    createdAt: new Date().toISOString(),
+  },
+
+  // 25. Gold Kada Bangle Set
+  {
+    id: "prod-25",
+    name: "Gold Kada Bangle Set",
+    description: "A set of two 22K gold kada bangles with intricate engraved patterns.",
+    price: 250000,
+    discountPrice: 225000,
+    category: "gold",
+    metal: "22K Yellow Gold",
+    stone: "None",
+    stock: 4,
+    images: [
+      "https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=800&q=80",
+    ],
+    rating: 5.0,
+    reviewCount: 28,
+    isNewArrival: true,
+    createdAt: new Date().toISOString(),
+  },
+
+  // 26. Gold Mangalsutra with Black Beads
+  {
+    id: "prod-26",
+    name: "Gold Mangalsutra with Black Beads",
+    description: "A modern gold mangalsutra with black beads and a diamond-studded pendant.",
+    price: 95000,
+    discountPrice: 85500,
+    category: "gold",
+    metal: "22K Yellow Gold",
+    stone: "Solitaire Diamond",
+    stock: 7,
+    images: [
+      "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=800&q=80",
+    ],
+    rating: 4.8,
+    reviewCount: 20,
+    isNewArrival: true,
+    createdAt: new Date().toISOString(),
+  },
+
+  // 27. Gold Anklet Pair
+  {
+    id: "prod-27",
+    name: "Gold Anklet Pair",
+    description: "A pair of 22K gold anklets with small bells and chain links.",
+    price: 38000,
+    discountPrice: 34200,
+    category: "gold",
+    metal: "22K Yellow Gold",
+    stone: "None",
+    stock: 11,
+    images: [
+      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=800&q=80",
+    ],
+    rating: 4.7,
+    reviewCount: 13,
+    isNewArrival: true,
+    createdAt: new Date().toISOString(),
+  },
+
+  // 28. Gold Nose Pin
+  {
+    id: "prod-28",
+    name: "Gold Nose Pin",
+    description: "A delicate gold nose pin with a small diamond, perfect for everyday elegance.",
+    price: 12500,
+    discountPrice: 11250,
+    category: "gold",
+    metal: "22K Yellow Gold",
+    stone: "Solitaire Diamond",
+    stock: 20,
+    images: [
+      "https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=800&q=80",
+    ],
+    rating: 4.9,
+    reviewCount: 42,
+    isNewArrival: true,
+    createdAt: new Date().toISOString(),
+  },
+
+  // 29. Gold Ring with Ruby Stone
+  {
+    id: "prod-29",
+    name: "Gold Ring with Ruby Stone",
+    description: "A 22K gold ring featuring a deep red ruby stone in a bezel setting.",
+    price: 85000,
+    discountPrice: 76500,
+    category: "gold",
+    metal: "22K Yellow Gold",
+    stone: "Ruby",
+    stock: 6,
+    images: [
+      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=800&q=80",
+    ],
+    rating: 4.8,
+    reviewCount: 17,
+    isNewArrival: true,
+    createdAt: new Date().toISOString(),
+  },
+
+  // 30. Gold Layered Chain Necklace
+  {
+    id: "prod-30",
+    name: "Gold Layered Chain Necklace",
+    description: "A multi-layered gold chain necklace with a contemporary design.",
+    price: 110000,
+    discountPrice: 99000,
+    category: "gold",
+    metal: "22K Yellow Gold",
+    stone: "None",
+    stock: 8,
+    images: [
+      "https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=800&q=80",
+    ],
+    rating: 4.8,
+    reviewCount: 23,
+    isNewArrival: true,
+    createdAt: new Date().toISOString(),
+  },
+
+  // 31. Kundan Choker Set
+  {
+    id: "prod-31",
+    name: "Kundan Choker Set",
+    description: "A royal Kundan choker set with uncut diamonds, emeralds, and pearl drops.",
+    price: 450000,
+    discountPrice: 405000,
+    category: "traditional",
+    metal: "22K Yellow Gold",
+    stone: "Kundan",
+    stock: 3,
+    images: [
+      "https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=800&q=80",
+    ],
+    rating: 5.0,
+    reviewCount: 35,
+    isNewArrival: true,
+    createdAt: new Date().toISOString(),
+  },
+
+  // 32. Polki Long Haram
+  {
+    id: "prod-32",
+    name: "Polki Long Haram",
+    description: "A long Polki haram necklace with layered chains and intricate gold work.",
+    price: 580000,
+    discountPrice: 522000,
+    category: "traditional",
+    metal: "22K Yellow Gold",
+    stone: "Kundan",
+    stock: 2,
+    images: [
+      "https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=800&q=80",
+    ],
+    rating: 4.9,
+    reviewCount: 26,
+    isNewArrival: true,
+    createdAt: new Date().toISOString(),
+  },
+
+  // 33. Meenakari Jhumka Earrings
+  {
+    id: "prod-33",
+    name: "Meenakari Jhumka Earrings",
+    description: "Traditional Meenakari jhumka earrings with colorful enamel work and pearl drops.",
+    price: 68000,
+    discountPrice: 61200,
+    category: "traditional",
+    metal: "22K Yellow Gold",
+    stone: "Pearl",
+    stock: 10,
+    images: [
+      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=800&q=80",
+    ],
+    rating: 4.8,
+    reviewCount: 19,
+    isNewArrival: true,
+    createdAt: new Date().toISOString(),
+  },
+
+  // 34. Temple Jewelry Maang Tikka
+  {
+    id: "prod-34",
+    name: "Temple Jewelry Maang Tikka",
+    description: "A temple-style maang tikka with Goddess Lakshmi motifs and gold beads.",
+    price: 125000,
+    discountPrice: 112500,
+    category: "traditional",
+    metal: "22K Yellow Gold",
+    stone: "Kundan",
+    stock: 5,
+    images: [
+      "https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=800&q=80",
+    ],
+    rating: 4.9,
+    reviewCount: 21,
+    isNewArrival: true,
+    createdAt: new Date().toISOString(),
+  },
+
+  // 35. Jadau Necklace Set
+  {
+    id: "prod-35",
+    name: "Jadau Necklace Set",
+    description: "An exquisite Jadau necklace set with precious stones and gold foil work.",
+    price: 620000,
+    discountPrice: 558000,
+    category: "traditional",
+    metal: "22K Yellow Gold",
+    stone: "Kundan",
+    stock: 2,
+    images: [
+      "https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=800&q=80",
+    ],
+    rating: 5.0,
+    reviewCount: 30,
+    isNewArrival: true,
+    createdAt: new Date().toISOString(),
+  },
+
+  // 36. Antique Gold Choker
+  {
+    id: "prod-36",
+    name: "Antique Gold Choker",
+    description: "An antique-finish gold choker with intricate lattice patterns and ruby accents.",
+    price: 320000,
+    discountPrice: 288000,
+    category: "traditional",
+    metal: "22K Yellow Gold",
+    stone: "Ruby",
+    stock: 4,
+    images: [
+      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=800&q=80",
+    ],
+    rating: 4.8,
+    reviewCount: 18,
+    isNewArrival: true,
+    createdAt: new Date().toISOString(),
+  },
+
+  // 37. Traditional Bajubandh (Armlet)
+  {
+    id: "prod-37",
+    name: "Traditional Bajubandh (Armlet)",
+    description: "A traditional gold bajubandh with carved motifs and a central medallion.",
+    price: 180000,
+    discountPrice: 162000,
+    category: "traditional",
+    metal: "22K Yellow Gold",
+    stone: "Kundan",
+    stock: 5,
+    images: [
+      "https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=800&q=80",
+    ],
+    rating: 4.7,
+    reviewCount: 14,
+    isNewArrival: true,
+    createdAt: new Date().toISOString(),
+  },
+
+  // 38. Kamarbandh (Waist Chain)
+  {
+    id: "prod-38",
+    name: "Kamarbandh (Waist Chain)",
+    description: "A gold kamarbandh with delicate chain links and a central floral pendant.",
+    price: 290000,
+    discountPrice: 261000,
+    category: "traditional",
+    metal: "22K Yellow Gold",
+    stone: "Kundan",
+    stock: 3,
+    images: [
+      "https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=800&q=80",
+    ],
+    rating: 4.9,
+    reviewCount: 22,
+    isNewArrival: true,
+    createdAt: new Date().toISOString(),
+  },
+
+  // 39. Navratna Pendant Set
+  {
+    id: "prod-39",
+    name: "Navratna Pendant Set",
+    description: "A Navratna pendant with nine gemstones representing the nine planets.",
+    price: 410000,
+    discountPrice: 369000,
+    category: "traditional",
+    metal: "22K Yellow Gold",
+    stone: "Ruby",
+    stock: 4,
+    images: [
+      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=800&q=80",
+    ],
+    rating: 5.0,
+    reviewCount: 27,
+    isNewArrival: true,
+    createdAt: new Date().toISOString(),
+  },
+
+  // 40. Traditional Gold Thushi Necklace
+  {
+    id: "prod-40",
+    name: "Traditional Gold Thushi Necklace",
+    description: "A Maharashtrian-style gold Thushi necklace with tight gold bead clusters.",
+    price: 150000,
+    discountPrice: 135000,
+    category: "traditional",
+    metal: "22K Yellow Gold",
+    stone: "None",
+    stock: 6,
+    images: [
+      "https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=800&q=80",
+    ],
+    rating: 4.8,
+    reviewCount: 20,
+    isNewArrival: true,
+    createdAt: new Date().toISOString(),
+  },
+
+  // 41. Bridal Polki Necklace Set
+  {
+    id: "prod-41",
+    name: "Bridal Polki Necklace Set",
+    description: "A complete bridal Polki necklace set with matching earrings and maang tikka.",
+    price: 850000,
+    discountPrice: 765000,
+    category: "bridal",
+    metal: "22K Yellow Gold",
+    stone: "Kundan",
+    stock: 2,
+    images: [
+      "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=800&q=80",
+    ],
+    rating: 5.0,
+    reviewCount: 34,
+    isNewArrival: true,
+    createdAt: new Date().toISOString(),
+  },
+
+  // 42. Bridal Diamond Choker
+  {
+    id: "prod-42",
+    name: "Bridal Diamond Choker",
+    description: "A stunning bridal diamond choker with emerald drops and pearl accents.",
+    price: 720000,
+    discountPrice: 648000,
+    category: "bridal",
+    metal: "18K White Gold",
+    stone: "VVS Diamonds",
+    stock: 2,
+    images: [
+      "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=800&q=80",
+    ],
+    rating: 4.9,
+    reviewCount: 28,
+    isNewArrival: true,
+    createdAt: new Date().toISOString(),
+  },
+
+  // 43. Bridal Jhumka Set
+  {
+    id: "prod-43",
+    name: "Bridal Jhumka Set",
+    description: "A pair of large bridal jhumkas with pearl drops and gold filigree.",
+    price: 380000,
+    discountPrice: 342000,
+    category: "bridal",
+    metal: "22K Yellow Gold",
+    stone: "Pearl",
+    stock: 4,
+    images: [
+      "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=800&q=80",
+    ],
+    rating: 4.8,
+    reviewCount: 22,
+    isNewArrival: true,
+    createdAt: new Date().toISOString(),
+  },
+
+  // 44. Bridal Maang Tikka
+  {
+    id: "prod-44",
+    name: "Bridal Maang Tikka",
+    description: "A bridal maang tikka with a central diamond and pearl drops.",
+    price: 250000,
+    discountPrice: 225000,
+    category: "bridal",
+    metal: "22K Yellow Gold",
+    stone: "Solitaire Diamond",
+    stock: 5,
+    images: [
+      "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=800&q=80",
+    ],
+    rating: 4.9,
+    reviewCount: 19,
+    isNewArrival: true,
+    createdAt: new Date().toISOString(),
+  },
+
+  // 45. Bridal Haath Phool
+  {
+    id: "prod-45",
+    name: "Bridal Haath Phool",
+    description: "A bridal haath phool with gold chains connecting to a floral ring.",
+    price: 195000,
+    discountPrice: 175500,
+    category: "bridal",
+    metal: "22K Yellow Gold",
+    stone: "Kundan",
+    stock: 6,
+    images: [
+      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=800&q=80",
+    ],
+    rating: 4.8,
+    reviewCount: 16,
+    isNewArrival: true,
+    createdAt: new Date().toISOString(),
+  },
+
+  // 46. Bridal Kundan Bangle Set
+  {
+    id: "prod-46",
+    name: "Bridal Kundan Bangle Set",
+    description: "A set of four Kundan bangles with red and green stone accents.",
+    price: 460000,
+    discountPrice: 414000,
+    category: "bridal",
+    metal: "22K Yellow Gold",
+    stone: "Kundan",
+    stock: 3,
+    images: [
+      "https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=800&q=80",
+    ],
+    rating: 5.0,
+    reviewCount: 31,
+    isNewArrival: true,
+    createdAt: new Date().toISOString(),
+  },
+
+  // 47. Bridal Necklace with Earrings
+  {
+    id: "prod-47",
+    name: "Bridal Necklace with Earrings",
+    description: "A grand bridal necklace set with uncut diamonds, rubies, and emeralds.",
+    price: 980000,
+    discountPrice: 882000,
+    category: "bridal",
+    metal: "22K Yellow Gold",
+    stone: "Emerald",
+    stock: 2,
+    images: [
+      "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=800&q=80",
+    ],
+    rating: 5.0,
+    reviewCount: 40,
+    isNewArrival: true,
+    createdAt: new Date().toISOString(),
+  },
+
+  // 48. Bridal Nose Ring (Nath)
+  {
+    id: "prod-48",
+    name: "Bridal Nose Ring (Nath)",
+    description: "A traditional bridal nose ring with a delicate chain and pearl drop.",
+    price: 85000,
+    discountPrice: 76500,
+    category: "bridal",
+    metal: "22K Yellow Gold",
+    stone: "Pearl",
+    stock: 8,
+    images: [
+      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=800&q=80",
+    ],
+    rating: 4.7,
+    reviewCount: 15,
+    isNewArrival: true,
+    createdAt: new Date().toISOString(),
+  },
+
+  // 49. Bridal Payal (Anklet) Set
+  {
+    id: "prod-49",
+    name: "Bridal Payal (Anklet) Set",
+    description: "A heavy bridal payal set with silver bells and gold plating.",
+    price: 140000,
+    discountPrice: 126000,
+    category: "bridal",
+    metal: "22K Yellow Gold",
+    stone: "None",
+    stock: 5,
+    images: [
+      "https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=800&q=80",
+    ],
+    rating: 4.8,
+    reviewCount: 17,
+    isNewArrival: true,
+    createdAt: new Date().toISOString(),
+  },
+
+  // 50. Bridal Full Set (Necklace + Earrings + Tikka + Bangles)
+  {
+    id: "prod-50",
+    name: "Bridal Full Set (Necklace + Earrings + Tikka + Bangles)",
+    description: "A complete bridal jewellery set including necklace, earrings, maang tikka, and bangles.",
+    price: 1250000,
+    discountPrice: 1125000,
+    category: "bridal",
+    metal: "22K Yellow Gold",
+    stone: "Kundan",
+    stock: 1,
+    images: [
+      "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=800&q=80",
+    ],
+    rating: 5.0,
+    reviewCount: 45,
+    isNewArrival: true,
+    createdAt: new Date().toISOString(),
+  },
 ];
 
 export const MOCK_REVIEWS: Review[] = [

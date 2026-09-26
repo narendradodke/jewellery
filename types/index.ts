@@ -10,6 +10,7 @@ export interface Product {
   details?: string[];
   price: number;
   originalPrice?: number;
+  discountPrice?: number;
   discountPercentage?: number;
   category: Category;
   metal: MetalType;
@@ -24,6 +25,7 @@ export interface Product {
   sizes?: string[];
   purity?: string;
   sku?: string;
+  createdAt?: string;
 }
 
 export interface Collection {
