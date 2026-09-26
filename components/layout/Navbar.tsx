@@ -111,7 +111,10 @@ export const Navbar: React.FC = () => {
             {/* Desktop Navigation Links */}
             <nav className="hidden lg:flex items-center space-x-8">
               {navLinks.map((link) => {
-                const isActive = pathname === link.href;
+                const isActive =
+                  link.href === "/"
+                    ? pathname === "/"
+                    : pathname.startsWith(link.href);
                 return (
                   <Link
                     key={link.href}
