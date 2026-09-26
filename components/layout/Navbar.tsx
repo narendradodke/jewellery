@@ -24,7 +24,9 @@ export const Navbar: React.FC = () => {
   const [searchModalOpen, setSearchModalOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 
-  const cartCount = useCartStore((state) => state.getItemCount());
+  const cartCount = useCartStore((state) =>
+    state.items.reduce((sum, item) => sum + item.quantity, 0)
+  );
   const wishlistCount = useCartStore((state) => state.wishlist.length);
 
   useEffect(() => {
