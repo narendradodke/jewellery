@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import {
   ShoppingBag,
   Heart,
@@ -17,8 +17,10 @@ import {
 import { useCartStore } from "@/store/useCartStore";
 import { GlobalSearchBar } from "@/components/layout/GlobalSearchBar";
 
-export const Navbar: React.FC = () => {
+const NavbarContent: React.FC = () => {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const currentCategory = searchParams.get("category");
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchModalOpen, setSearchModalOpen] = useState(false);
@@ -51,7 +53,7 @@ export const Navbar: React.FC = () => {
 
   useEffect(() => {
     setMobileMenuOpen(false);
-  }, [pathname]);
+  }, [pathname, searchParams]);
 
   const navLinks = [
     { label: "Home", href: "/" },
@@ -111,10 +113,21 @@ export const Navbar: React.FC = () => {
             {/* Desktop Navigation Links */}
             <nav className="hidden lg:flex items-center space-x-8">
               {navLinks.map((link) => {
-                const isActive =
-                  link.href === "/"
-                    ? pathname === "/"
-                    : pathname.startsWith(link.href);
+                const isActive = (() => {
+                  if (link.href === "/") {
+                    return pathname === "/";
+                  }
+                  if (link.href.includes("?")) {
+                    const [path, query] = link.href.split("?");
+                    const linkCategory = new URLSearchParams(query).get("category");
+                    return pathname === path && currentCategory === linkCategory;
+                  }
+                  if (link.href === "/shop") {
+                    return pathname === "/shop" && !currentCategory;
+                  }
+                  return pathname.startsWith(link.href);
+                })();
+
                 return (
                   <Link
                     key={link.href}
@@ -184,16 +197,37 @@ export const Navbar: React.FC = () => {
         {mobileMenuOpen && (
           <div className="lg:hidden bg-background/98 border-b border-luxury-border px-6 py-6 transition-all duration-300">
             <div className="flex flex-col space-y-4">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-sm uppercase tracking-widest text-white/90 hover:text-gold-400 py-2 border-b border-white/5"
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {navLinks.map((link) => {
+                const isActive = (() => {
+                  if (link.href === "/") {
+                    return pathname === "/";
+                  }
+                  if (link.href.includes("?")) {
+                    const [path, query] = link.href.split("?");
+                    const linkCategory = new URLSearchParams(query).get("category");
+                    return pathname === path && currentCategory === linkCategory;
+                  }
+                  if (link.href === "/shop") {
+                    return pathname === "/shop" && !currentCategory;
+                  }
+                  return pathname.startsWith(link.href);
+                })();
+
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`text-sm uppercase tracking-widest py-2 border-b border-white/5 transition-colors ${
+                      isActive
+                        ? "text-gold-400 font-semibold"
+                        : "text-white/90 hover:text-gold-400"
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
               <div className="pt-4 flex items-center justify-between text-xs text-luxury-muted">
                 <button
                   type="button"
@@ -276,3 +310,12 @@ export const Navbar: React.FC = () => {
     </>
   );
 };
+
+export const Navbar: React.FC = () => {
+  return (
+    <Suspense fallback={null}>
+      <NavbarContent />
+    </Suspense>
+  );
+};
+
