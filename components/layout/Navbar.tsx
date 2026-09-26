@@ -15,11 +15,13 @@ import {
   Grid,
 } from "lucide-react";
 import { useCartStore } from "@/store/useCartStore";
+import { GlobalSearchBar } from "@/components/layout/GlobalSearchBar";
 
 export const Navbar: React.FC = () => {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [searchModalOpen, setSearchModalOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 
   const cartCount = useCartStore((state) => state.getItemCount());
@@ -112,13 +114,14 @@ export const Navbar: React.FC = () => {
 
             {/* Utility Icons */}
             <div className="flex items-center space-x-3 sm:space-x-5">
-              <Link
-                href="/shop"
+              <button
+                type="button"
+                onClick={() => setSearchModalOpen(true)}
                 className="p-2 text-white/80 hover:text-gold-400 transition-colors hidden sm:block"
                 aria-label="Search Collection"
               >
                 <Search className="w-4 h-4" />
-              </Link>
+              </button>
 
               <Link
                 href="/shop"
@@ -172,13 +175,16 @@ export const Navbar: React.FC = () => {
                 </Link>
               ))}
               <div className="pt-4 flex items-center justify-between text-xs text-luxury-muted">
-                <Link
-                  href="/shop"
-                  onClick={() => setMobileMenuOpen(false)}
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    setSearchModalOpen(true);
+                  }}
                   className="hover:text-gold-300"
                 >
                   Search Jewellery
-                </Link>
+                </button>
                 <Link
                   href="/cart"
                   onClick={() => setMobileMenuOpen(false)}
@@ -241,6 +247,12 @@ export const Navbar: React.FC = () => {
           <span className="text-[10px] tracking-wider uppercase font-medium">Profile</span>
         </Link>
       </nav>
+
+      {/* Global Instant Search Modal */}
+      <GlobalSearchBar
+        isOpen={searchModalOpen}
+        onClose={() => setSearchModalOpen(false)}
+      />
     </>
   );
 };

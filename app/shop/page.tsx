@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo, Suspense } from "react";
+import React, { useState, useEffect, useMemo, Suspense } from "react";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { Filter, SlidersHorizontal, X, RotateCcw, ChevronDown } from "lucide-react";
@@ -13,14 +13,24 @@ import { formatPrice } from "@/lib/utils";
 function ShopContent() {
   const searchParams = useSearchParams();
   const initialCategory = searchParams.get("category") || "all";
+  const initialSearch = searchParams.get("search") || "";
 
   // Filter States
   const [selectedCategory, setSelectedCategory] = useState<string>(initialCategory);
   const [selectedMetal, setSelectedMetal] = useState<string>("all");
   const [selectedStone, setSelectedStone] = useState<string>("all");
   const [maxPrice, setMaxPrice] = useState<number>(600000);
+  const [searchQuery, setSearchQuery] = useState<string>(initialSearch);
   const [sortBy, setSortBy] = useState<string>("featured");
   const [mobileFilterOpen, setMobileFilterOpen] = useState<boolean>(false);
+
+  // Sync when search parameter changes
+  useEffect(() => {
+    const s = searchParams.get("search");
+    if (s !== null) setSearchQuery(s);
+    const c = searchParams.get("category");
+    if (c !== null) setSelectedCategory(c);
+  }, [searchParams]);
 
   const categories = [
     { label: "All Collections", value: "all" },
@@ -57,6 +67,16 @@ function ShopContent() {
       if (selectedMetal !== "all" && product.metal !== selectedMetal) return false;
       if (selectedStone !== "all" && product.stone !== selectedStone) return false;
       if (product.price > maxPrice) return false;
+      if (searchQuery.trim()) {
+        const q = searchQuery.toLowerCase().trim();
+        const matches =
+          product.name.toLowerCase().includes(q) ||
+          product.description.toLowerCase().includes(q) ||
+          product.category.toLowerCase().includes(q) ||
+          product.metal.toLowerCase().includes(q) ||
+          product.stone.toLowerCase().includes(q);
+        if (!matches) return false;
+      }
       return true;
     }).sort((a, b) => {
       if (sortBy === "price-low") return a.price - b.price;
@@ -64,13 +84,14 @@ function ShopContent() {
       if (sortBy === "rating") return b.rating - a.rating;
       return 0; // featured default
     });
-  }, [selectedCategory, selectedMetal, selectedStone, maxPrice, sortBy]);
+  }, [selectedCategory, selectedMetal, selectedStone, maxPrice, searchQuery, sortBy]);
 
   const resetFilters = () => {
     setSelectedCategory("all");
     setSelectedMetal("all");
     setSelectedStone("all");
     setMaxPrice(600000);
+    setSearchQuery("");
     setSortBy("featured");
   };
 
@@ -78,7 +99,8 @@ function ShopContent() {
     (selectedCategory !== "all" ? 1 : 0) +
     (selectedMetal !== "all" ? 1 : 0) +
     (selectedStone !== "all" ? 1 : 0) +
-    (maxPrice < 600000 ? 1 : 0);
+    (maxPrice < 600000 ? 1 : 0) +
+    (searchQuery.trim() !== "" ? 1 : 0);
 
   return (
     <div className="min-h-screen bg-background text-white pb-20">
@@ -148,6 +170,83 @@ function ShopContent() {
             </div>
           </div>
         </div>
+
+        {/* Active Filters Pill Strip */}
+        {activeFiltersCount > 0 && (
+          <div className="flex flex-wrap items-center gap-2 pt-4 pb-2 border-b border-white/5">
+            <span className="text-[11px] uppercase tracking-wider text-luxury-muted mr-1 font-mono">
+              Active Filters ({activeFiltersCount}):
+            </span>
+            {selectedCategory !== "all" && (
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-gold-500/10 border border-gold-500/30 text-gold-300 text-xs capitalize">
+                <span>Category: {selectedCategory}</span>
+                <button
+                  onClick={() => setSelectedCategory("all")}
+                  className="hover:text-white"
+                  aria-label="Remove category filter"
+                >
+                  <X className="w-3 h-3" />
+                </button>
+              </span>
+            )}
+            {selectedMetal !== "all" && (
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-gold-500/10 border border-gold-500/30 text-gold-300 text-xs">
+                <span>Metal: {selectedMetal}</span>
+                <button
+                  onClick={() => setSelectedMetal("all")}
+                  className="hover:text-white"
+                  aria-label="Remove metal filter"
+                >
+                  <X className="w-3 h-3" />
+                </button>
+              </span>
+            )}
+            {selectedStone !== "all" && (
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-gold-500/10 border border-gold-500/30 text-gold-300 text-xs">
+                <span>Stone: {selectedStone}</span>
+                <button
+                  onClick={() => setSelectedStone("all")}
+                  className="hover:text-white"
+                  aria-label="Remove stone filter"
+                >
+                  <X className="w-3 h-3" />
+                </button>
+              </span>
+            )}
+            {maxPrice < 600000 && (
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-gold-500/10 border border-gold-500/30 text-gold-300 text-xs">
+                <span>Under {formatPrice(maxPrice)}</span>
+                <button
+                  onClick={() => setMaxPrice(600000)}
+                  className="hover:text-white"
+                  aria-label="Remove price filter"
+                >
+                  <X className="w-3 h-3" />
+                </button>
+              </span>
+            )}
+            {searchQuery.trim() !== "" && (
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-gold-500/10 border border-gold-500/30 text-gold-300 text-xs">
+                <span>Search: &ldquo;{searchQuery}&rdquo;</span>
+                <button
+                  onClick={() => setSearchQuery("")}
+                  className="hover:text-white"
+                  aria-label="Remove search filter"
+                >
+                  <X className="w-3 h-3" />
+                </button>
+              </span>
+            )}
+
+            <button
+              onClick={resetFilters}
+              className="ml-auto inline-flex items-center gap-1.5 px-3 py-1 bg-card hover:bg-card-hover border border-gold-500/40 text-gold-400 text-xs uppercase tracking-wider font-semibold transition-colors"
+            >
+              <RotateCcw className="w-3 h-3" />
+              <span>Clear All Filters ({activeFiltersCount})</span>
+            </button>
+          </div>
+        )}
 
         {/* Layout Grid: Sidebar + Product Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 pt-8">
