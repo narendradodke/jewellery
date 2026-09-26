@@ -1,15 +1,24 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, type Variants } from "framer-motion";
+import { motion, AnimatePresence, type Variants } from "framer-motion";
 import { ArrowRight, Sparkles, Gem, ShieldCheck, Clock, Award } from "lucide-react";
 import { IMAGE_ASSETS } from "@/lib/imageAssets";
 import { COLLECTIONS, PRODUCTS } from "@/lib/mockData";
 import { ProductCard } from "@/components/product/ProductCard";
 import { ShopTheLook } from "@/components/home/ShopTheLook";
 import { Button } from "@/components/ui/Button";
+
+const heroImages = [
+  "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=1920&q=80",
+  "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=1920&q=80",
+  "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=1920&q=80",
+  "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=1920&q=80",
+  "https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=1920&q=80",
+  "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?auto=format&fit=crop&w=1920&q=80",
+];
 
 const staggerContainer: Variants = {
   hidden: { opacity: 0 },
@@ -32,30 +41,79 @@ const fadeUp: Variants = {
 
 export default function HomePage() {
   const newArrivalProducts = PRODUCTS.filter((p) => p.isNewArrival).slice(0, 4);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroImages.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <main className="min-h-screen bg-background text-white overflow-hidden">
       {/* 1. HERO SECTION */}
       <section className="relative min-h-[90vh] lg:min-h-[92vh] flex items-center justify-start overflow-hidden">
-        {/* Background Image with Scale Animation */}
-        <motion.div
-          initial={{ scale: 1.12, opacity: 0.8 }}
-          animate={{ scale: 1.04, opacity: 1 }}
-          transition={{ duration: 1.8, ease: "easeOut" }}
-          className="absolute inset-0 z-0"
-        >
-          <Image
-            src={IMAGE_ASSETS.heroBackground.url}
-            alt={IMAGE_ASSETS.heroBackground.alt}
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-center"
-          />
+        {/* Auto-playing Ken Burns Slideshow Background */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <AnimatePresence initial={false}>
+            <motion.div
+              key={currentSlide}
+              initial={{ opacity: 0, scale: 1.03 }}
+              animate={{ opacity: 1, scale: 1.15 }}
+              exit={{ opacity: 0 }}
+              transition={{
+                opacity: { duration: 1.5, ease: "easeInOut" },
+                scale: { duration: 6.8, ease: "easeOut" },
+              }}
+              className="absolute inset-0"
+            >
+              <Image
+                src={heroImages[currentSlide]}
+                alt={`LUXORA Fine Jewellery - Hero Slide ${currentSlide + 1}`}
+                fill
+                priority={currentSlide === 0}
+                sizes="100vw"
+                className="object-cover object-center"
+              />
+            </motion.div>
+          </AnimatePresence>
+
           {/* Multi-layered dark luxury gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/75 to-black/30 lg:to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-black/40" />
-        </motion.div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/75 to-black/30 lg:to-transparent z-[1]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-black/40 z-[1]" />
+        </div>
+
+        {/* Hidden Preloader for Hero Images */}
+        <div className="hidden" aria-hidden="true">
+          {heroImages.map((src, index) => (
+            <Image
+              key={src}
+              src={src}
+              alt=""
+              width={10}
+              height={10}
+              priority={index < 2}
+            />
+          ))}
+        </div>
+
+        {/* Slideshow Progress Indicators */}
+        <div className="absolute bottom-8 right-6 sm:right-12 z-20 flex items-center gap-2">
+          {heroImages.map((_, idx) => (
+            <button
+              key={idx}
+              type="button"
+              onClick={() => setCurrentSlide(idx)}
+              aria-label={`Go to slide ${idx + 1}`}
+              className={`h-1 transition-all duration-500 rounded-full ${
+                idx === currentSlide
+                  ? "w-8 bg-gold-400"
+                  : "w-2 bg-white/30 hover:bg-white/60"
+              }`}
+            />
+          ))}
+        </div>
 
         {/* Hero Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
