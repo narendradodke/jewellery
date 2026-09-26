@@ -23,10 +23,21 @@ import { PaymentMethod } from "@/types";
 
 export default function CartAndCheckoutPage() {
   const [isMounted, setIsMounted] = useState(false);
-  const { items, updateQuantity, removeItem, clearCart, getTotalPrice } = useCartStore();
+  const {
+    items,
+    updateQuantity,
+    removeItem,
+    clearCart,
+    getSubtotal,
+    getTax,
+    getDiscount,
+    getTotalPrice,
+    appliedVoucher,
+    applyVoucher,
+    removeVoucher,
+  } = useCartStore();
 
   const [promoCode, setPromoCode] = useState("");
-  const [appliedDiscount, setAppliedDiscount] = useState(0);
   const [promoMessage, setPromoMessage] = useState("");
   const [isOrdering, setIsOrdering] = useState(false);
   const [orderComplete, setOrderComplete] = useState(false);
@@ -47,23 +58,16 @@ export default function CartAndCheckoutPage() {
     setIsMounted(true);
   }, []);
 
-  const subtotal = isMounted ? getTotalPrice() : 0;
-  const tax = subtotal > 0 ? Math.round(subtotal * 0.03) : 0; // 3% GST on jewellery
-  const shipping = 0; // Free luxury insured delivery
-  const total = Math.max(0, subtotal + tax - appliedDiscount);
+  const subtotal = isMounted ? getSubtotal() : 0;
+  const tax = isMounted ? getTax() : 0;
+  const appliedDiscount = isMounted ? getDiscount() : 0;
+  const total = isMounted ? getTotalPrice() : 0;
 
   const handleApplyPromo = (e: React.FormEvent) => {
     e.preventDefault();
-    if (promoCode.trim().toUpperCase() === "LUXORA10") {
-      const discount = Math.round(subtotal * 0.1);
-      setAppliedDiscount(discount);
-      setPromoMessage("LUXORA10 applied: 10% Royal Privilege Discount");
-    } else if (promoCode.trim().toUpperCase() === "GOLDEN") {
-      setAppliedDiscount(15000);
-      setPromoMessage("GOLDEN applied: ₹15,000 Atelier Credit");
-    } else {
-      setPromoMessage("Invalid privilege voucher code");
-    }
+    if (!promoCode.trim()) return;
+    const res = applyVoucher(promoCode);
+    setPromoMessage(res.message);
   };
 
   const handlePlaceOrder = (e: React.FormEvent) => {
@@ -470,9 +474,18 @@ export default function CartAndCheckoutPage() {
                   <span className="text-gold-400 uppercase font-semibold">Complimentary</span>
                 </div>
 
-                {appliedDiscount > 0 && (
-                  <div className="flex justify-between text-green-400 font-medium">
-                    <span>Privilege Voucher</span>
+                {appliedDiscount > 0 && appliedVoucher && (
+                  <div className="flex justify-between items-center text-green-400 font-medium">
+                    <div className="flex items-center gap-1.5">
+                      <span>{appliedVoucher.code}</span>
+                      <button
+                        type="button"
+                        onClick={removeVoucher}
+                        className="text-[10px] text-luxury-muted hover:text-red-400 underline ml-1"
+                      >
+                        Remove
+                      </button>
+                    </div>
                     <span>-{formatPrice(appliedDiscount)}</span>
                   </div>
                 )}
