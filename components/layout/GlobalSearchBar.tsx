@@ -32,15 +32,10 @@ export const GlobalSearchBar: React.FC<GlobalSearchBarProps> = ({ isOpen, onClos
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
-      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
-        e.preventDefault();
-        if (isOpen) onClose();
-        else onClose(); // will be controlled by parent
-      }
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isOpen, onClose]);
+  }, [onClose]);
 
   // Debounced search
   useEffect(() => {
