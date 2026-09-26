@@ -459,7 +459,7 @@ export const PRODUCTS: Product[] = [
     stone: "Solitaire Diamond",
     stock: 5,
     images: [
-      "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1722410180687-b05b50922362?q=80&w=800&auto=format&fit=crop",
     ],
     rating: 4.8,
     reviewCount: 29,
@@ -479,7 +479,7 @@ export const PRODUCTS: Product[] = [
     stone: "VVS Diamonds",
     stock: 3,
     images: [
-      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1722410180681-9f5a22d7ebb6?q=80&w=800&auto=format&fit=crop",
     ],
     rating: 5.0,
     reviewCount: 32,
@@ -499,7 +499,7 @@ export const PRODUCTS: Product[] = [
     stone: "Solitaire Diamond",
     stock: 7,
     images: [
-      "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1600862754152-80a263dd564f?q=80&w=800&auto=format&fit=crop",
     ],
     rating: 4.8,
     reviewCount: 16,
@@ -519,7 +519,7 @@ export const PRODUCTS: Product[] = [
     stone: "VVS Diamonds",
     stock: 4,
     images: [
-      "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1707222609377-3da9903b88f1?q=80&w=800&auto=format&fit=crop",
     ],
     rating: 4.9,
     reviewCount: 22,
@@ -539,7 +539,7 @@ export const PRODUCTS: Product[] = [
     stone: "VVS Diamonds",
     stock: 2,
     images: [
-      "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1758995115682-1452a1a9e35b?q=80&w=800&auto=format&fit=crop",
     ],
     rating: 5.0,
     reviewCount: 19,
@@ -559,7 +559,7 @@ export const PRODUCTS: Product[] = [
     stone: "VVS Diamonds",
     stock: 5,
     images: [
-      "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1739194806935-3b4c66aee282?q=80&w=800&auto=format&fit=crop",
     ],
     rating: 4.9,
     reviewCount: 27,
@@ -599,7 +599,7 @@ export const PRODUCTS: Product[] = [
     stone: "None",
     stock: 12,
     images: [
-      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=800&q=80",
+      "https://media.istockphoto.com/id/1407505620/photo/gold-jewelry-set.jpg?s=612x612&w=is&k=20&c=V-RTSWKTQmOiEYRVyEDF6YtDhMbohdjDkldAQyHDoI4=",
     ],
     rating: 4.7,
     reviewCount: 14,
@@ -619,7 +619,7 @@ export const PRODUCTS: Product[] = [
     stone: "Pearl",
     stock: 9,
     images: [
-      "https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1744822220368-c380740bfc7f?q=80&w=800&auto=format&fit=crop",
     ],
     rating: 4.8,
     reviewCount: 25,
@@ -639,7 +639,7 @@ export const PRODUCTS: Product[] = [
     stone: "None",
     stock: 15,
     images: [
-      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1632325707710-2bce161b7642?w=800&auto=format&fit=crop&q=80",
     ],
     rating: 4.9,
     reviewCount: 36,
@@ -659,7 +659,7 @@ export const PRODUCTS: Product[] = [
     stone: "None",
     stock: 4,
     images: [
-      "https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1782224743914-3de85a74e41f?q=80&w=800&auto=format&fit=crop",
     ],
     rating: 5.0,
     reviewCount: 28,
@@ -679,7 +679,7 @@ export const PRODUCTS: Product[] = [
     stone: "Solitaire Diamond",
     stock: 7,
     images: [
-      "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1583937443351-f2f669fbe2cf?w=800&auto=format&fit=crop&q=80",
     ],
     rating: 4.8,
     reviewCount: 20,
@@ -699,7 +699,7 @@ export const PRODUCTS: Product[] = [
     stone: "None",
     stock: 11,
     images: [
-      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1727947553983-1e1aee64605b?w=800&auto=format&fit=crop&q=80",
     ],
     rating: 4.7,
     reviewCount: 13,
@@ -719,7 +719,7 @@ export const PRODUCTS: Product[] = [
     stone: "Solitaire Diamond",
     stock: 20,
     images: [
-      "https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1707150814808-c7fdba03c49f?q=80&w=800&auto=format&fit=crop",
     ],
     rating: 4.9,
     reviewCount: 42,
@@ -739,7 +739,7 @@ export const PRODUCTS: Product[] = [
     stone: "Ruby",
     stock: 6,
     images: [
-      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1671642883395-0ab89c3ac890?q=80&w=800&auto=format&fit=crop",
     ],
     rating: 4.8,
     reviewCount: 17,
@@ -1163,6 +1163,207 @@ export const PRODUCTS: Product[] = [
     ],
     rating: 5.0,
     reviewCount: 45,
+    isNewArrival: true,
+    createdAt: new Date().toISOString(),
+  },
+
+
+// 51. Maharani Royal Bridal Aad & Mathapatti Set
+  {
+    id: "prod-51",
+    name: "Maharani Royal Bridal Aad & Mathapatti Set",
+    description: "An imperial Rajasthani bridal ensemble comprising a regal Aad choker, elaborate Mathapatti, and handcrafted emerald bead hangings.",
+    price: 485000,
+    discountPrice: 440000,
+    category: "bridal",
+    metal: "22K Yellow Gold",
+    stone: "Kundan",
+    stock: 2,
+    images: [
+      "https://media.istockphoto.com/id/944588662/photo/attractive-indian-young-women-portrait-with-indian-traditional-jewelry.jpg?s=612x612&w=is&k=20&c=r7YVgSSVR6gP7fIVK5-YPKXFANeogR4N4J6UwxPE4jc=",
+    ],
+    rating: 5.0,
+    reviewCount: 34,
+    isNewArrival: true,
+    createdAt: new Date().toISOString(),
+  },
+
+  // 52. Marquise Solitaire Diamond Cocktail Ring
+  {
+    id: "prod-52",
+    name: "Marquise Solitaire Diamond Cocktail Ring",
+    description: "Featuring a 2.10ct marquise-cut solitaire diamond crowned with a tapering diamond shank in lustrous 18K white gold.",
+    price: 265000,
+    discountPrice: 238500,
+    category: "diamond",
+    metal: "18K White Gold",
+    stone: "Solitaire Diamond",
+    stock: 4,
+    images: [
+      "https://plus.unsplash.com/premium_photo-1724762183134-c17cf5f5bed2?q=80&w=800&auto=format&fit=crop",
+    ],
+    rating: 4.9,
+    reviewCount: 22,
+    isNewArrival: true,
+    createdAt: new Date().toISOString(),
+  },
+
+  // 53. Antique Polki Chandbali Earrings
+  {
+    id: "prod-53",
+    name: "Antique Polki Chandbali Earrings",
+    description: "Crescent-shaped Mughal Chandbali earrings embedded with uncut syndicate Polki diamonds and ruby droplets.",
+    price: 175000,
+    discountPrice: 155000,
+    category: "traditional",
+    metal: "22K Yellow Gold",
+    stone: "Kundan",
+    stock: 5,
+    images: [
+      "https://images.unsplash.com/photo-1663170564019-86ccd5212140?w=800&auto=format&fit=crop&q=80",
+    ],
+    rating: 4.8,
+    reviewCount: 19,
+    isNewArrival: true,
+    createdAt: new Date().toISOString(),
+  },
+
+  // 54. Heritage Filigree Broad Bangle
+  {
+    id: "prod-54",
+    name: "Heritage Filigree Broad Bangle",
+    description: "Extravagant 22K yellow gold broad cuff with micro-wire filigree artwork, hand-soldered by master karigars.",
+    price: 215000,
+    discountPrice: 195000,
+    category: "gold",
+    metal: "22K Yellow Gold",
+    stone: "None",
+    stock: 6,
+    images: [
+      "https://images.unsplash.com/photo-1721807644561-9efcabee5c42?q=80&w=800&auto=format&fit=crop",
+    ],
+    rating: 4.9,
+    reviewCount: 27,
+    isNewArrival: true,
+    createdAt: new Date().toISOString(),
+  },
+
+  // 55. Royal Emerald & Pavé Diamond Collar
+  {
+    id: "prod-55",
+    name: "Royal Emerald & Pavé Diamond Collar",
+    description: "A red-carpet masterpiece featuring alternating natural Colombian emeralds and brilliant pavé diamonds in 18K white gold.",
+    price: 520000,
+    discountPrice: 475000,
+    category: "diamond",
+    metal: "18K White Gold",
+    stone: "Emerald",
+    stock: 2,
+    images: [
+      "https://images.unsplash.com/photo-1758995116383-f51775896add?q=80&w=800&auto=format&fit=crop",
+    ],
+    rating: 5.0,
+    reviewCount: 31,
+    isNewArrival: true,
+    createdAt: new Date().toISOString(),
+  },
+
+  // 56. Handcrafted Temple Guttapusalu Necklace
+  {
+    id: "prod-56",
+    name: "Handcrafted Temple Guttapusalu Necklace",
+    description: "Traditional South Indian Guttapusalu necklace fringed with clusters of fine basra pearls and ruby-studded deity motifs.",
+    price: 340000,
+    discountPrice: 310000,
+    category: "traditional",
+    metal: "22K Yellow Gold",
+    stone: "Pearl",
+    stock: 4,
+    images: [
+      "https://images.unsplash.com/photo-1728381031272-ba3f537feadd?w=800&auto=format&fit=crop&q=80",
+    ],
+    rating: 4.8,
+    reviewCount: 24,
+    isNewArrival: true,
+    createdAt: new Date().toISOString(),
+  },
+
+  // 57. Imperial Diamond Solitaire Pendant
+  {
+    id: "prod-57",
+    name: "Imperial Diamond Solitaire Pendant",
+    description: "A breathtaking 1.25ct certified round diamond pendant cradled in a four-prong platinum basket on a shimmering wheat chain.",
+    price: 145000,
+    discountPrice: 130000,
+    category: "diamond",
+    metal: "Platinum",
+    stone: "Solitaire Diamond",
+    stock: 7,
+    images: [
+      "https://images.unsplash.com/photo-1617191880362-aac615de3c26?q=80&w=800&auto=format&fit=crop",
+    ],
+    rating: 4.9,
+    reviewCount: 29,
+    isNewArrival: true,
+    createdAt: new Date().toISOString(),
+  },
+
+  // 58. Sovereign 22K Gold Rani Haar
+  {
+    id: "prod-58",
+    name: "Sovereign 22K Gold Rani Haar",
+    description: "An imposing multi-strand royal long necklace sculpted in 22K hallmarked gold with ornate floral medallion stations.",
+    price: 410000,
+    discountPrice: 375000,
+    category: "gold",
+    metal: "22K Yellow Gold",
+    stone: "None",
+    stock: 3,
+    images: [
+      "https://images.unsplash.com/photo-1626784214536-d859187e0bd0?w=800&auto=format&fit=crop&q=80",
+    ],
+    rating: 4.9,
+    reviewCount: 38,
+    isNewArrival: true,
+    createdAt: new Date().toISOString(),
+  },
+
+  // 59. Maharani Kundan Matha Patti & Passa
+  {
+    id: "prod-59",
+    name: "Maharani Kundan Matha Patti & Passa",
+    description: "Exquisite bridal headpiece with three-tier side chains, uncut Kundan stones, and emerald bead drops.",
+    price: 165000,
+    discountPrice: 148000,
+    category: "bridal",
+    metal: "22K Yellow Gold",
+    stone: "Kundan",
+    stock: 5,
+    images: [
+      "https://images.unsplash.com/photo-1659095141570-be8b9aff59ce?w=800&auto=format&fit=crop&q=80",
+    ],
+    rating: 4.7,
+    reviewCount: 16,
+    isNewArrival: true,
+    createdAt: new Date().toISOString(),
+  },
+
+  // 60. Vintage Victorian Diamond Drop Pendant
+  {
+    id: "prod-60",
+    name: "Vintage Victorian Diamond Drop Pendant",
+    description: "Art-deco inspired Victorian drop pendant in 18K rose gold accented with micro-set diamonds and milgrain detailing.",
+    price: 95000,
+    discountPrice: 85000,
+    category: "diamond",
+    metal: "18K Rose Gold",
+    stone: "VVS Diamonds",
+    stock: 8,
+    images: [
+      "https://images.unsplash.com/photo-1706076876111-28bf14ec6169?w=800&auto=format&fit=crop&q=80",
+    ],
+    rating: 4.8,
+    reviewCount: 21,
     isNewArrival: true,
     createdAt: new Date().toISOString(),
   },
