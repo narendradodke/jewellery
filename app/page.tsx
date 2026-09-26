@@ -291,9 +291,9 @@ export default function HomePage() {
 
           {/* Responsive Grid with Mobile Snap Scrolling */}
           <div className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:overflow-visible">
-            {newArrivalProducts.map((product) => (
+            {newArrivalProducts.map((product, idx) => (
               <div key={product.id} className="min-w-[280px] sm:min-w-0 snap-start shrink-0 sm:shrink">
-                <ProductCard product={product} />
+                <ProductCard product={product} index={idx} />
               </div>
             ))}
           </div>
@@ -306,7 +306,13 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-black/85 backdrop-blur-[1px]" />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background" />
 
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center space-y-6">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="relative z-10 max-w-4xl mx-auto px-4 text-center space-y-6"
+        >
           <div className="w-12 h-[1px] bg-gold-400 mx-auto" />
           <div className="inline-flex p-3 rounded-full bg-gold-500/10 border border-gold-500/30 text-gold-400 mb-2">
             <Gem className="w-6 h-6 animate-pulse-slow" />
@@ -353,12 +359,18 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* 5. PATRON TESTIMONIALS SECTION */}
       <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-2xl mx-auto mb-16 space-y-3"
+        >
           <p className="text-xs uppercase tracking-editorial text-gold-400 font-semibold font-mono">
             Collector Accolades
           </p>
@@ -369,7 +381,7 @@ export default function HomePage() {
           <p className="text-xs sm:text-sm text-luxury-muted font-light leading-relaxed">
             Reflections from patrons who entrust their most cherished milestones to LUXORA Haute Joaillerie.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {[

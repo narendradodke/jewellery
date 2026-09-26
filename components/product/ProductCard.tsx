@@ -12,9 +12,10 @@ import { useCartStore } from "@/store/useCartStore";
 interface ProductCardProps {
   product: Product;
   priority?: boolean;
+  index?: number;
 }
 
-export const ProductCard: React.FC<ProductCardProps> = ({ product, priority = false }) => {
+export const ProductCard: React.FC<ProductCardProps> = ({ product, priority = false, index = 0 }) => {
   const { toggleWishlist, isInWishlist, addItem } = useCartStore();
   const isWishlisted = isInWishlist(product.id);
   const [isAdding, setIsAdding] = useState(false);
@@ -36,8 +37,15 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, priority = fa
 
   return (
     <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-40px" }}
       whileHover={{ y: -5, boxShadow: "0 0 30px rgba(212, 175, 55, 0.22)" }}
-      transition={{ duration: 0.3, ease: "easeOut" }}
+      transition={{
+        duration: 0.45,
+        delay: Math.min(index * 0.05, 0.35),
+        ease: [0.22, 1, 0.36, 1],
+      }}
       className="group relative flex flex-col bg-card/60 backdrop-blur-sm border border-luxury-border rounded-none overflow-hidden transition-colors duration-300 hover:border-gold-500"
     >
       {/* Badges */}

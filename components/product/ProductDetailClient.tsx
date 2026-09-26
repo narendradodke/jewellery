@@ -527,9 +527,9 @@ export const ProductDetailClient: React.FC<ProductDetailClientProps> = ({ produc
             </h3>
           </div>
           <div className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 sm:overflow-visible">
-            {relatedProducts.map((p) => (
+            {relatedProducts.map((p, idx) => (
               <div key={p.id} className="min-w-[280px] sm:min-w-0 snap-start shrink-0 sm:shrink">
-                <ProductCard product={p} />
+                <ProductCard product={p} index={idx} />
               </div>
             ))}
           </div>
