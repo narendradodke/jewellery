@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
-import { ArrowRight, Sparkles, Gem, ShieldCheck, Clock, Award } from "lucide-react";
+import { ArrowRight, Sparkles, Gem, ShieldCheck, Clock, Award, Star } from "lucide-react";
 import { IMAGE_ASSETS } from "@/lib/imageAssets";
 import { COLLECTIONS, PRODUCTS } from "@/lib/mockData";
 import { ProductCard } from "@/components/product/ProductCard";
@@ -202,10 +202,10 @@ export default function HomePage() {
           transition={{ duration: 0.7 }}
           className="text-center max-w-2xl mx-auto mb-16 space-y-3"
         >
-          <p className="text-xs uppercase tracking-[0.3em] text-gold-400 font-semibold font-mono">
+          <p className="text-xs uppercase tracking-editorial text-gold-400 font-semibold font-mono">
             Handcrafted Masterpieces
           </p>
-          <h2 className="text-3xl sm:text-4xl font-serif text-white tracking-wide">
+          <h2 className="text-3xl sm:text-4xl font-serif font-light text-white tracking-wide">
             Our Signature Collections
           </h2>
           <div className="w-16 h-[1px] bg-gold-500/60 mx-auto" />
@@ -214,19 +214,19 @@ export default function HomePage() {
           </p>
         </motion.div>
 
-        {/* 5 Collections Grid with Stagger */}
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-60px" }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5"
-        >
-          {COLLECTIONS.map((col) => (
-            <motion.div key={col.id} variants={fadeUp}>
+        {/* Collections Grid with Asymmetric Feel & Hover Micro-Interactions */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+          {COLLECTIONS.map((col, idx) => (
+            <motion.div
+              key={col.id}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: idx * 0.08 }}
+            >
               <Link
                 href={`/shop?category=${col.category}`}
-                className="group relative h-96 overflow-hidden border border-luxury-border hover:border-gold-500/60 transition-all duration-500 bg-card block"
+                className="group relative h-[420px] overflow-hidden border border-luxury-border hover:border-gold-500 transition-all duration-500 bg-card block"
               >
                 <Image
                   src={col.image}
@@ -234,105 +234,87 @@ export default function HomePage() {
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw"
                   loading="lazy"
-                  className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-110"
+                  className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-black/50 group-hover:bg-black/70 transition-colors duration-400" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-transparent to-transparent" />
 
-                <div className="absolute inset-0 p-5 flex flex-col justify-end text-center items-center">
-                  <span className="text-[10px] uppercase tracking-widest text-gold-400 mb-1">
-                    {col.itemCount} Designs
+                <div className="absolute inset-0 p-6 flex flex-col justify-end text-center items-center">
+                  <span className="text-[10px] uppercase tracking-editorial text-gold-400 font-mono mb-1.5">
+                    {col.itemCount} Curated Pieces
                   </span>
-                  <h3 className="font-serif text-xl text-white tracking-wider group-hover:text-gold-300 transition-colors">
+                  <h3 className="font-serif text-2xl text-white tracking-wide font-normal group-hover:text-gold-300 transition-colors">
                     {col.title}
                   </h3>
-                  <p className="text-[11px] text-gray-300 font-light mt-1 line-clamp-2 max-w-[200px] opacity-0 group-hover:opacity-100 transition-all duration-300">
+                  <p className="text-[11px] text-gray-300 font-light mt-2 line-clamp-2 max-w-[220px] opacity-0 group-hover:opacity-100 transition-all duration-300 leading-relaxed">
                     {col.description}
                   </p>
-                  <div className="mt-3 inline-flex items-center text-[10px] uppercase tracking-widest font-semibold text-gold-400 gap-1 border-b border-gold-500/40 pb-0.5">
-                    <span>Explore</span>
-                    <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                  <div className="mt-4 inline-flex items-center text-[11px] uppercase tracking-luxe font-medium text-gold-400 gap-1.5 border-b border-gold-500/40 pb-0.5 group-hover:border-gold-400">
+                    <span>Explore Suite</span>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1.5 transition-transform duration-300" />
                   </div>
                 </div>
               </Link>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </section>
 
-      {/* EDITORIAL: SHOP THE LOOK */}
+      {/* EDITORIAL: SHOP THE LOOKBOOK WITH INTERACTIVE HOTSPOTS */}
       <ShopTheLook />
 
-      {/* 3. NEW ARRIVALS SECTION */}
-      <section className="py-20 bg-[#0E0E0E] border-y border-luxury-border">
+      {/* 3. NEW ARRIVALS SECTION WITH MOBILE SNAP CAROUSEL */}
+      <section className="py-24 bg-[#0B0B0B] border-y border-luxury-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4"
+            className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4"
           >
             <div>
-              <p className="text-xs uppercase tracking-[0.3em] text-gold-400 font-semibold font-mono">
+              <p className="text-xs uppercase tracking-editorial text-gold-400 font-semibold font-mono">
                 The New Season
               </p>
-              <h2 className="text-3xl sm:text-4xl font-serif text-white tracking-wide mt-1">
+              <h2 className="text-3xl sm:text-4xl font-serif font-light text-white tracking-wide mt-1">
                 New Arrivals
               </h2>
             </div>
             <Link href="/shop">
-              <Button variant="goldOutline" size="sm">
+              <Button variant="goldOutline" size="sm" className="tracking-luxe">
                 <span>View Full Catalogue</span>
                 <ArrowRight className="w-3.5 h-3.5 ml-2" />
               </Button>
             </Link>
           </motion.div>
 
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-50px" }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
-          >
+          {/* Responsive Grid with Mobile Snap Scrolling */}
+          <div className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:overflow-visible">
             {newArrivalProducts.map((product) => (
-              <motion.div key={product.id} variants={fadeUp}>
+              <div key={product.id} className="min-w-[280px] sm:min-w-0 snap-start shrink-0 sm:shrink">
                 <ProductCard product={product} />
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* 4. "CRAFTED BY HANDS" CRAFTSMANSHIP BANNER */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-        className="relative py-28 overflow-hidden"
-      >
-        <div className="absolute inset-0 z-0">
-          <Image
-            src={IMAGE_ASSETS.craftedByHands.url}
-            alt={IMAGE_ASSETS.craftedByHands.alt}
-            fill
-            sizes="100vw"
-            loading="lazy"
-            className="object-cover object-center"
-          />
-          <div className="absolute inset-0 bg-black/85 backdrop-blur-[1px]" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background" />
-        </div>
+      {/* 4. "CRAFTED BY HANDS" FULL-WIDTH PARALLAX CRAFTSMANSHIP SECTION */}
+      <section className="relative py-32 overflow-hidden bg-fixed bg-center bg-cover border-y border-gold-500/20" style={{ backgroundImage: `url(${IMAGE_ASSETS.craftedByHands.url})` }}>
+        {/* Dark Luxury Overlay */}
+        <div className="absolute inset-0 bg-black/85 backdrop-blur-[1px]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background" />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center space-y-6">
+          <div className="w-12 h-[1px] bg-gold-400 mx-auto" />
           <div className="inline-flex p-3 rounded-full bg-gold-500/10 border border-gold-500/30 text-gold-400 mb-2">
             <Gem className="w-6 h-6 animate-pulse-slow" />
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-serif text-white tracking-wide leading-tight">
+          <h2 className="text-3xl sm:text-5xl font-serif font-light text-white tracking-wide leading-tight">
             Crafted by Hands, <br />
-            <span className="italic text-gold-300 font-light">Perfected by Tradition</span>
+            <span className="italic text-gold-gradient font-normal">Perfected by Tradition</span>
           </h2>
 
           <p className="text-sm sm:text-base text-gray-300 max-w-2xl mx-auto leading-relaxed font-light">
@@ -341,38 +323,121 @@ export default function HomePage() {
 
           <div className="pt-4 flex flex-wrap items-center justify-center gap-4 sm:gap-6">
             <Link href="/shop">
-              <Button size="lg">Explore Craftsmanship</Button>
+              <Button size="lg" className="tracking-luxe">Explore Craftsmanship</Button>
             </Link>
             <Link href="/cart">
-              <Button variant="outline" size="lg">Consult Master Jeweller</Button>
+              <Button variant="goldOutline" size="lg" className="tracking-luxe">Consult Master Jeweller</Button>
             </Link>
           </div>
 
-          <div className="pt-8 grid grid-cols-2 md:grid-cols-3 gap-6 max-w-xl mx-auto text-left border-t border-white/10 mt-8">
+          <div className="pt-10 grid grid-cols-2 md:grid-cols-3 gap-6 max-w-xl mx-auto text-left border-t border-white/10 mt-10">
             <div className="flex items-center gap-3">
               <Clock className="w-5 h-5 text-gold-400 shrink-0" />
               <div>
-                <p className="text-xs uppercase text-white font-medium">120+ Hours</p>
+                <p className="text-xs uppercase text-white font-medium font-mono">120+ Hours</p>
                 <p className="text-[10px] text-luxury-muted">Per Bespoke Creation</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
               <Award className="w-5 h-5 text-gold-400 shrink-0" />
               <div>
-                <p className="text-xs uppercase text-white font-medium">Hallmark Purity</p>
+                <p className="text-xs uppercase text-white font-medium font-mono">Hallmark Purity</p>
                 <p className="text-[10px] text-luxury-muted">22K / 18K Certified Gold</p>
               </div>
             </div>
             <div className="flex items-center gap-3 col-span-2 md:col-span-1">
               <ShieldCheck className="w-5 h-5 text-gold-400 shrink-0" />
               <div>
-                <p className="text-xs uppercase text-white font-medium">Laser Inscribed</p>
+                <p className="text-xs uppercase text-white font-medium font-mono">Laser Inscribed</p>
                 <p className="text-[10px] text-luxury-muted">GIA Micro-Registry</p>
               </div>
             </div>
           </div>
         </div>
-      </motion.section>
+      </section>
+
+      {/* 5. PATRON TESTIMONIALS SECTION */}
+      <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
+          <p className="text-xs uppercase tracking-editorial text-gold-400 font-semibold font-mono">
+            Collector Accolades
+          </p>
+          <h2 className="text-3xl sm:text-4xl font-serif font-light text-white tracking-wide">
+            Voices of Connoisseurs
+          </h2>
+          <div className="w-16 h-[1px] bg-gold-500/60 mx-auto" />
+          <p className="text-xs sm:text-sm text-luxury-muted font-light leading-relaxed">
+            Reflections from patrons who entrust their most cherished milestones to LUXORA Haute Joaillerie.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[
+            {
+              name: "Devika Singhania",
+              city: "Mumbai & London",
+              role: "Patron & Collector",
+              avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
+              quote: "The Royal Bloom solitaire surpassed every expectation. The fire of the diamonds in natural daylight is breathtaking, and the bespoke vault packaging made unboxing feel like a royal ceremony.",
+              piece: "Royal Bloom Solitaire Ring",
+            },
+            {
+              name: "Maharaja Samarjit Singh",
+              city: "Jaipur",
+              role: "Heritage Connoisseur",
+              avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80",
+              quote: "Acquired the Kundan Choker for our family milestone. The Meenakari enamel on the reverse is true museum-grade lineage art. LUXORA is in an exquisite league of its own.",
+              piece: "Heritage Kundan Choker Set",
+            },
+            {
+              name: "Aanya Mehta Verma",
+              city: "Dubai",
+              role: "High Jewellery Patron",
+              avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80",
+              quote: "Ordering high jewellery online felt daunting until LUXORA's white-glove armored courier arrived with full gemological dossiers. Truly peerless craftsmanship and discreet elegance.",
+              piece: "Diamond Tennis Bracelet",
+            },
+          ].map((t, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: idx * 0.15 }}
+              className="p-8 bg-card/60 backdrop-blur-sm border border-luxury-border hover:border-gold-500/50 transition-colors duration-300 flex flex-col justify-between space-y-6"
+            >
+              <div className="space-y-4">
+                <div className="flex items-center gap-1 text-gold-400">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <Star key={i} className="w-3.5 h-3.5 fill-gold-400 text-gold-400" />
+                  ))}
+                </div>
+                <p className="text-xs sm:text-sm text-gray-300 font-light leading-relaxed italic">
+                  &ldquo;{t.quote}&rdquo;
+                </p>
+              </div>
+
+              <div className="pt-4 border-t border-white/5 flex items-center gap-3.5">
+                <div className="relative w-11 h-11 rounded-full overflow-hidden border border-gold-400/40 shrink-0">
+                  <Image
+                    src={t.avatar}
+                    alt={t.name}
+                    fill
+                    sizes="44px"
+                    className="object-cover"
+                  />
+                </div>
+                <div>
+                  <h4 className="font-serif text-sm text-white font-normal">{t.name}</h4>
+                  <p className="text-[10px] text-luxury-muted uppercase tracking-wider">
+                    {t.city} &bull; <span className="text-gold-300/80">{t.piece}</span>
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
     </main>
   );
 }
