@@ -8,6 +8,7 @@ import { ArrowRight, Sparkles, Gem, ShieldCheck, Clock, Award } from "lucide-rea
 import { IMAGE_ASSETS } from "@/lib/imageAssets";
 import { COLLECTIONS, PRODUCTS } from "@/lib/mockData";
 import { ProductCard } from "@/components/product/ProductCard";
+import { ShopTheLook } from "@/components/home/ShopTheLook";
 import { Button } from "@/components/ui/Button";
 
 const staggerContainer: Variants = {
@@ -193,6 +194,9 @@ export default function HomePage() {
           ))}
         </motion.div>
       </section>
+
+      {/* EDITORIAL: SHOP THE LOOK */}
+      <ShopTheLook />
 
       {/* 3. NEW ARRIVALS SECTION */}
       <section className="py-20 bg-[#0E0E0E] border-y border-luxury-border">
