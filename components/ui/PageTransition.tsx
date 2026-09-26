@@ -1,11 +1,20 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
 
 export const PageTransition: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const pathname = usePathname();
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return <div className="w-full flex-1">{children}</div>;
+  }
 
   return (
     <AnimatePresence mode="wait">

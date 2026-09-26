@@ -1,10 +1,15 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { ShieldCheck, Truck, RotateCcw, Award, Mail, ArrowRight } from "lucide-react";
 
 export const Footer: React.FC = () => {
+  const [currentYear, setCurrentYear] = useState<number | string>(2026);
+
+  useEffect(() => {
+    setCurrentYear(new Date().getFullYear());
+  }, []);
   return (
     <footer className="bg-[#080808] border-t border-luxury-border text-white/80 pb-16 md:pb-0">
       {/* Trust Badges Strip */}
@@ -197,7 +202,7 @@ export const Footer: React.FC = () => {
 
         {/* Bottom Bar */}
         <div className="pt-12 mt-12 border-t border-white/5 flex flex-col md:flex-row items-center justify-between text-xs text-luxury-subtle gap-4">
-          <p>&copy; {new Date().getFullYear()} LUXORA Haute Joaillerie Ltd. All Rights Reserved.</p>
+          <p suppressHydrationWarning>&copy; {currentYear} LUXORA Haute Joaillerie Ltd. All Rights Reserved.</p>
           <div className="flex items-center space-x-6 text-[11px]">
             <span className="hover:text-white cursor-pointer">Privacy Policy</span>
             <span className="hover:text-white cursor-pointer">Terms of Service</span>
