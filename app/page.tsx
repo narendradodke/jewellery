@@ -51,30 +51,45 @@ export default function HomePage() {
   return (
     <main className="min-h-screen bg-background text-white overflow-hidden">
       {/* 1. HERO SECTION */}
-      <section className="relative min-h-[90vh] lg:min-h-[92vh] flex items-center justify-start overflow-hidden">
-        {/* Background Images Crossfade Slideshow */}
+      <section className="relative min-h-[90vh] lg:min-h-[94vh] flex items-center justify-start overflow-hidden">
+        {/* Background Images Crossfade + Ken Burns Slideshow */}
         <div className="absolute inset-0 z-0 overflow-hidden">
-          {heroImages.map((src, index) => (
-            <div
-              key={src}
-              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                index === currentIndex ? "opacity-100" : "opacity-0 pointer-events-none"
-              }`}
-            >
-              <Image
-                src={src}
-                alt={`LUXORA Fine Jewellery - Hero Slide ${index + 1}`}
-                fill
-                priority
-                sizes="100vw"
-                className="object-cover object-center"
-              />
-            </div>
-          ))}
+          {heroImages.map((src, index) => {
+            const isActive = index === currentIndex;
+            return (
+              <div
+                key={src}
+                className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                  isActive ? "opacity-100" : "opacity-0 pointer-events-none"
+                }`}
+              >
+                <div
+                  className={`w-full h-full transform transition-transform duration-[8000ms] ease-out ${
+                    isActive ? "scale-108" : "scale-100"
+                  }`}
+                >
+                  <Image
+                    src={src}
+                    alt={`LUXORA Fine Jewellery - Hero Slide ${index + 1}`}
+                    fill
+                    priority
+                    sizes="100vw"
+                    className="object-cover object-center"
+                  />
+                </div>
+              </div>
+            );
+          })}
 
           {/* Dark gradient overlay on top of all images for text readability */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent z-10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-transparent z-10" />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-black/40 z-10" />
+        </div>
+
+        {/* Scroll Down Indicator */}
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 hidden md:flex flex-col items-center gap-1.5 opacity-80 hover:opacity-100 transition-opacity">
+          <span className="text-[9px] uppercase tracking-editorial text-gold-300/80 font-mono">Scroll</span>
+          <div className="w-[1px] h-8 bg-gradient-to-b from-gold-400 via-gold-400/60 to-transparent animate-pulse" />
         </div>
 
         {/* Slideshow Progress Indicators */}
@@ -87,7 +102,7 @@ export default function HomePage() {
               aria-label={`Go to slide ${idx + 1}`}
               className={`h-1 transition-all duration-500 rounded-full ${
                 idx === currentIndex
-                  ? "w-8 bg-gold-400"
+                  ? "w-8 bg-gold-400 shadow-gold-sm"
                   : "w-2 bg-white/30 hover:bg-white/60"
               }`}
             />
@@ -95,50 +110,60 @@ export default function HomePage() {
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            animate="show"
-            className="max-w-2xl space-y-6"
-          >
+        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 w-full">
+          <div className="max-w-2xl space-y-6">
+            {/* Label with editorial thin gold vertical line */}
             <motion.div
-              variants={fadeUp}
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/60 border border-gold-500/30 backdrop-blur-md"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+              className="inline-flex items-center gap-3"
             >
-              <Sparkles className="w-3.5 h-3.5 text-gold-400" />
-              <span className="text-[11px] uppercase tracking-widest text-gold-300 font-medium">
-                High Jewellery 2026 Collection
-              </span>
+              <span className="w-[2px] h-5 bg-gold-400 inline-block" />
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-black/60 border border-gold-500/30 backdrop-blur-md">
+                <Sparkles className="w-3.5 h-3.5 text-gold-400" />
+                <span className="text-[11px] uppercase tracking-editorial text-gold-300 font-cinzel font-medium">
+                  Timeless Elegance &bull; Haute Joaillerie 2026
+                </span>
+              </div>
             </motion.div>
 
+            {/* Heading */}
             <motion.h1
-              variants={fadeUp}
-              className="text-4xl sm:text-5xl lg:text-6xl font-serif font-normal text-white leading-[1.15] tracking-wide"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
+              className="text-4xl sm:text-5xl lg:text-6xl font-serif font-light text-white leading-[1.12] tracking-wide"
             >
               More Than Just Jewellery, <br />
-              <span className="italic font-light text-gold-300">It&apos;s a Feeling</span>
+              <span className="italic font-normal text-gold-gradient">It&apos;s a Feeling</span>
             </motion.h1>
 
+            {/* Subtext */}
             <motion.p
-              variants={fadeUp}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.6, ease: "easeOut" }}
               className="text-sm sm:text-base text-gray-300 font-light max-w-xl leading-relaxed"
             >
               Immerse yourself in our haute joaillerie collections, meticulously sculpted with certified natural diamonds, 22K pure gold, and royal gemstones.
             </motion.p>
 
+            {/* Buttons */}
             <motion.div
-              variants={fadeUp}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.8, ease: "easeOut" }}
               className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4"
             >
               <Link href="/shop">
-                <Button size="lg" className="w-full sm:w-auto">
+                <Button size="lg" className="w-full sm:w-auto tracking-luxe">
                   <span>Explore Collections</span>
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </Link>
               <Link href="/shop?category=bridal">
-                <Button variant="goldOutline" size="lg" className="w-full sm:w-auto">
+                <Button variant="goldOutline" size="lg" className="w-full sm:w-auto tracking-luxe">
                   <span>The Bridal Atelier</span>
                 </Button>
               </Link>
@@ -146,7 +171,9 @@ export default function HomePage() {
 
             {/* Quick Metrics */}
             <motion.div
-              variants={fadeUp}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 1.0 }}
               className="pt-8 grid grid-cols-3 gap-6 border-t border-white/10 max-w-lg"
             >
               <div>
@@ -162,7 +189,7 @@ export default function HomePage() {
                 <p className="text-[11px] text-luxury-muted uppercase tracking-wider">Polish & Service</p>
               </div>
             </motion.div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
