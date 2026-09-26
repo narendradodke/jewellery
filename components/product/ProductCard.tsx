@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { Heart, Star, ShoppingBag, Eye } from "lucide-react";
 import { Product } from "@/types";
 import { formatPrice } from "@/lib/utils";
@@ -34,7 +35,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, priority = fa
   };
 
   return (
-    <div className="group relative flex flex-col bg-card/60 backdrop-blur-sm border border-luxury-border rounded-none overflow-hidden transition-all duration-500 hover:border-gold-500/50 hover:shadow-gold-sm">
+    <motion.div
+      whileHover={{ y: -5, boxShadow: "0 0 30px rgba(212, 175, 55, 0.22)" }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
+      className="group relative flex flex-col bg-card/60 backdrop-blur-sm border border-luxury-border rounded-none overflow-hidden transition-colors duration-300 hover:border-gold-500/50"
+    >
       {/* Badges */}
       <div className="absolute top-3 left-3 z-10 flex flex-col gap-1.5">
         {product.discountPercentage && (
@@ -141,6 +146,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, priority = fa
           </button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };

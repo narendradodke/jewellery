@@ -3,11 +3,31 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion, type Variants } from "framer-motion";
 import { ArrowRight, Sparkles, Gem, ShieldCheck, Clock, Award } from "lucide-react";
 import { IMAGE_ASSETS } from "@/lib/imageAssets";
 import { COLLECTIONS, PRODUCTS } from "@/lib/mockData";
 import { ProductCard } from "@/components/product/ProductCard";
 import { Button } from "@/components/ui/Button";
+
+const staggerContainer: Variants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.12,
+    },
+  },
+};
+
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 24 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
+};
 
 export default function HomePage() {
   const newArrivalProducts = PRODUCTS.filter((p) => p.isNewArrival).slice(0, 4);
@@ -16,41 +36,63 @@ export default function HomePage() {
     <main className="min-h-screen bg-background text-white overflow-hidden">
       {/* 1. HERO SECTION */}
       <section className="relative min-h-[90vh] lg:min-h-[92vh] flex items-center justify-start overflow-hidden">
-        {/* Background Image with Parallax-like Feel */}
-        <div className="absolute inset-0 z-0">
+        {/* Background Image with Scale Animation */}
+        <motion.div
+          initial={{ scale: 1.12, opacity: 0.8 }}
+          animate={{ scale: 1.04, opacity: 1 }}
+          transition={{ duration: 1.8, ease: "easeOut" }}
+          className="absolute inset-0 z-0"
+        >
           <Image
             src={IMAGE_ASSETS.heroBackground.url}
             alt={IMAGE_ASSETS.heroBackground.alt}
             fill
             priority
             sizes="100vw"
-            className="object-cover object-center scale-105"
+            className="object-cover object-center"
           />
           {/* Multi-layered dark luxury gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/75 to-black/30 lg:to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-black/40" />
-        </div>
+        </motion.div>
 
         {/* Hero Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
-          <div className="max-w-2xl space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/60 border border-gold-500/30 backdrop-blur-md">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            animate="show"
+            className="max-w-2xl space-y-6"
+          >
+            <motion.div
+              variants={fadeUp}
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/60 border border-gold-500/30 backdrop-blur-md"
+            >
               <Sparkles className="w-3.5 h-3.5 text-gold-400" />
               <span className="text-[11px] uppercase tracking-widest text-gold-300 font-medium">
                 High Jewellery 2026 Collection
               </span>
-            </div>
+            </motion.div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-normal text-white leading-[1.15] tracking-wide">
+            <motion.h1
+              variants={fadeUp}
+              className="text-4xl sm:text-5xl lg:text-6xl font-serif font-normal text-white leading-[1.15] tracking-wide"
+            >
               More Than Just Jewellery, <br />
               <span className="italic font-light text-gold-300">It&apos;s a Feeling</span>
-            </h1>
+            </motion.h1>
 
-            <p className="text-sm sm:text-base text-gray-300 font-light max-w-xl leading-relaxed">
+            <motion.p
+              variants={fadeUp}
+              className="text-sm sm:text-base text-gray-300 font-light max-w-xl leading-relaxed"
+            >
               Immerse yourself in our haute joaillerie collections, meticulously sculpted with certified natural diamonds, 22K pure gold, and royal gemstones.
-            </p>
+            </motion.p>
 
-            <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+            <motion.div
+              variants={fadeUp}
+              className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4"
+            >
               <Link href="/shop">
                 <Button size="lg" className="w-full sm:w-auto">
                   <span>Explore Collections</span>
@@ -62,10 +104,13 @@ export default function HomePage() {
                   <span>The Bridal Atelier</span>
                 </Button>
               </Link>
-            </div>
+            </motion.div>
 
             {/* Quick Metrics */}
-            <div className="pt-8 grid grid-cols-3 gap-6 border-t border-white/10 max-w-lg">
+            <motion.div
+              variants={fadeUp}
+              className="pt-8 grid grid-cols-3 gap-6 border-t border-white/10 max-w-lg"
+            >
               <div>
                 <p className="font-serif text-2xl font-bold text-gold-400">100%</p>
                 <p className="text-[11px] text-luxury-muted uppercase tracking-wider">Certified Conflict-Free</p>
@@ -78,14 +123,20 @@ export default function HomePage() {
                 <p className="font-serif text-2xl font-bold text-gold-400">Lifetime</p>
                 <p className="text-[11px] text-luxury-muted uppercase tracking-wider">Polish & Service</p>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
       {/* 2. OUR COLLECTIONS SECTION */}
       <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7 }}
+          className="text-center max-w-2xl mx-auto mb-16 space-y-3"
+        >
           <p className="text-xs uppercase tracking-[0.3em] text-gold-400 font-semibold font-mono">
             Handcrafted Masterpieces
           </p>
@@ -96,50 +147,63 @@ export default function HomePage() {
           <p className="text-xs sm:text-sm text-luxury-muted font-light leading-relaxed">
             From modern solitaire brilliance to ancient royal heritage, discover high jewellery tailored to define your legacy.
           </p>
-        </div>
+        </motion.div>
 
-        {/* 5 Collections Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
+        {/* 5 Collections Grid with Stagger */}
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-60px" }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5"
+        >
           {COLLECTIONS.map((col) => (
-            <Link
-              key={col.id}
-              href={`/shop?category=${col.category}`}
-              className="group relative h-96 overflow-hidden border border-luxury-border hover:border-gold-500/60 transition-all duration-500 bg-card"
-            >
-              <Image
-                src={col.image}
-                alt={col.alt}
-                fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw"
-                loading="lazy"
-                className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent transition-opacity duration-300" />
+            <motion.div key={col.id} variants={fadeUp}>
+              <Link
+                href={`/shop?category=${col.category}`}
+                className="group relative h-96 overflow-hidden border border-luxury-border hover:border-gold-500/60 transition-all duration-500 bg-card block"
+              >
+                <Image
+                  src={col.image}
+                  alt={col.alt}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw"
+                  loading="lazy"
+                  className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent transition-opacity duration-300" />
 
-              <div className="absolute inset-0 p-5 flex flex-col justify-end text-center items-center">
-                <span className="text-[10px] uppercase tracking-widest text-gold-400 mb-1">
-                  {col.itemCount} Designs
-                </span>
-                <h3 className="font-serif text-xl text-white tracking-wider group-hover:text-gold-300 transition-colors">
-                  {col.title}
-                </h3>
-                <p className="text-[11px] text-gray-300 font-light mt-1 line-clamp-2 max-w-[200px] opacity-0 group-hover:opacity-100 transition-all duration-300">
-                  {col.description}
-                </p>
-                <div className="mt-3 inline-flex items-center text-[10px] uppercase tracking-widest font-semibold text-gold-400 gap-1 border-b border-gold-500/40 pb-0.5">
-                  <span>Explore</span>
-                  <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                <div className="absolute inset-0 p-5 flex flex-col justify-end text-center items-center">
+                  <span className="text-[10px] uppercase tracking-widest text-gold-400 mb-1">
+                    {col.itemCount} Designs
+                  </span>
+                  <h3 className="font-serif text-xl text-white tracking-wider group-hover:text-gold-300 transition-colors">
+                    {col.title}
+                  </h3>
+                  <p className="text-[11px] text-gray-300 font-light mt-1 line-clamp-2 max-w-[200px] opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    {col.description}
+                  </p>
+                  <div className="mt-3 inline-flex items-center text-[10px] uppercase tracking-widest font-semibold text-gold-400 gap-1 border-b border-gold-500/40 pb-0.5">
+                    <span>Explore</span>
+                    <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                  </div>
                 </div>
-              </div>
-            </Link>
+              </Link>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </section>
 
       {/* 3. NEW ARRIVALS SECTION */}
       <section className="py-20 bg-[#0E0E0E] border-y border-luxury-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4"
+          >
             <div>
               <p className="text-xs uppercase tracking-[0.3em] text-gold-400 font-semibold font-mono">
                 The New Season
@@ -154,18 +218,32 @@ export default function HomePage() {
                 <ArrowRight className="w-3.5 h-3.5 ml-2" />
               </Button>
             </Link>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-50px" }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          >
             {newArrivalProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
+              <motion.div key={product.id} variants={fadeUp}>
+                <ProductCard product={product} />
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* 4. "CRAFTED BY HANDS" CRAFTSMANSHIP BANNER */}
-      <section className="relative py-28 overflow-hidden">
+      <motion.section
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="relative py-28 overflow-hidden"
+      >
         <div className="absolute inset-0 z-0">
           <Image
             src={IMAGE_ASSETS.craftedByHands.url}
@@ -226,7 +304,7 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
     </main>
   );
 }

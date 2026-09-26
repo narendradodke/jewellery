@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Playfair_Display, Inter, Cinzel } from "next/font/google";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { PageTransition } from "@/components/ui/PageTransition";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -36,7 +37,7 @@ export default function RootLayout({
     <html lang="en" className={`${playfair.variable} ${inter.variable} ${cinzel.variable}`}>
       <body className="bg-background text-white min-h-screen flex flex-col font-sans">
         <Navbar />
-        <div className="flex-1">{children}</div>
+        <PageTransition>{children}</PageTransition>
         <Footer />
       </body>
     </html>
