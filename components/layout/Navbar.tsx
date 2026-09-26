@@ -41,6 +41,7 @@ export const Navbar: React.FC = () => {
     { label: "Gold", href: "/shop?category=gold" },
     { label: "Traditional", href: "/shop?category=traditional" },
     { label: "Bridal", href: "/shop?category=bridal" },
+    { label: "Bespoke", href: "/bespoke" },
   ];
 
   return (
